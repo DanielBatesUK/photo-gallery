@@ -112,5 +112,5 @@ dist
 .tern-port
 
 # My Ignore
-public/images/photos/*
-public/images/thumbnails/*
+public/images/photos
+public/images/thumbnails

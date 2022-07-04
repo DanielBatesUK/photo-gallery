@@ -66,7 +66,7 @@ app.all('*', (req, res, next) => {
 // HTTP request for index page
 app.get(process.env.ROUTE_INDEX, (req, res) => {
   console.log(`${timeStamp()} - Processing HTTP ${req.method} request for '${req.path}' as 'index'`)
-  res.render(process.env.VIEW_INDEX)
+  res.render(process.env.VIEW_INDEX, {web_title: process.env.WEB_TITLE})
   res.end()
 })
 
@@ -95,7 +95,7 @@ app.get(process.env.ROUTE_GALLERY, (req, res) => {
 // GET
 app.get(process.env.ROUTE_UPLOAD, (req, res) => {
   console.log(`${timeStamp()} - Processing HTTP ${req.method} request for '${req.path}' as 'upload'`)
-  res.render(process.env.VIEW_UPLOAD)
+  res.render(process.env.VIEW_UPLOAD, {web_title: process.env.WEB_TITLE})
   res.end()
 })
 // POST
