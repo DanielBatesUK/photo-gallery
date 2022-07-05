@@ -9,7 +9,17 @@ html(lang='en')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js')
   body
     section
-      h1 Upload Image
-      form(action='/upload' method='POST' enctype='multipart/form-data')
-        input(type='file' accept='image/*' name='photos' multiple)
-        input(type='submit' value='Upload')
+      h1 !{web_title}
+      br
+      h2 Upload Photos
+      div(class='page')
+        if passcode === true
+          form(action='/upload' method='POST' enctype='multipart/form-data')
+            input(type='file' accept='image/*' name='photos' multiple)
+            input(type='submit' value='Upload')
+        else
+          form(action='/upload' method='GET' enctype='multipart/form-data')
+            label(for='p')
+              | Enter Passcode
+            input(type='text' placeholder='passcode' name='p')
+            input(type='submit' value='Enter')

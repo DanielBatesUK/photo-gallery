@@ -1,0 +1,43 @@
+/* Fonts ####################################################################################### */
+
+/* Script */
+@font-face {
+  font-family: 'my-script';
+
+  src:  url('../fonts/dan_and_dipty_script.eot'); 
+  src:  url('../fonts/dan_and_dipty_script.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/dan_and_dipty_script.woff') format('woff'), 
+        url('../fonts/dan_and_dipty_script.ttf')  format('truetype'),
+        url('../fonts/dan_and_dipty_script.svg#my-script') format('svg');
+
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Serif */
+@font-face {
+  font-family: 'my-serif';
+
+  src:  url('../fonts/dan_and_dipty_serif.eot'); 
+  src:  url('../fonts/dan_and_dipty_serif.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/dan_and_dipty_serif.woff') format('woff'), 
+        url('../fonts/dan_and_dipty_serif.ttf')  format('truetype'),
+        url('../fonts/dan_and_dipty_serif.svg#my-serif') format('svg');
+
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Handwriting */
+@font-face {
+  font-family: 'my-handwriting';
+
+  src:  url('../fonts/dan_and_dipty_handwriting.eot'); 
+  src:  url('../fonts/dan_and_dipty_handwriting.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/dan_and_dipty_handwriting.woff') format('woff'), 
+        url('../fonts/dan_and_dipty_handwriting.ttf')  format('truetype'),
+        url('../fonts/dan_and_dipty_handwriting.svg#my-handwriting') format('svg');
+
+  font-weight: normal;
+  font-style: normal;
+}

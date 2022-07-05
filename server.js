@@ -10,6 +10,7 @@ import crypto from 'crypto'
 import path from 'path'
 import { v4 as uuidV4 } from 'uuid'
 import sharp from 'sharp'
+import fs from 'fs'
 
 // ################################################################################################
 
@@ -87,7 +88,10 @@ app.post(process.env.ROUTE_PASSCODE, (req, res) => {
 // HTTP request for gallery page
 app.get(process.env.ROUTE_GALLERY, (req, res) => {
   console.log(`${timeStamp()} - Processing HTTP ${req.method} request for '${req.path}' as 'gallery'`)
-  res.send(`{"${req.method}":"${req.path}"}`)
+  console.log(`${timeStamp()} - Getting photo filenames:`)
+  const photoFilenames = fs.readdirSync(process.env.PATH_PHOTOS)
+  console.log(photoFilenames)
+  res.render(process.env.VIEW_GALLERY, {web_title: process.env.WEB_TITLE, photoFiles: photoFilenames})
   res.end()
 })
 
@@ -95,7 +99,10 @@ app.get(process.env.ROUTE_GALLERY, (req, res) => {
 // GET
 app.get(process.env.ROUTE_UPLOAD, (req, res) => {
   console.log(`${timeStamp()} - Processing HTTP ${req.method} request for '${req.path}' as 'upload'`)
-  res.render(process.env.VIEW_UPLOAD, {web_title: process.env.WEB_TITLE})
+  let passcode
+  if(typeof req.query.p === 'undefined' || req.query.p !== process.env.PASSCODE) {passcode = false} else {passcode = true}
+  console.log(`${timeStamp()} - Passcode check: ${passcode}`)
+  res.render(process.env.VIEW_UPLOAD, {web_title: process.env.WEB_TITLE, passcode: passcode})
   res.end()
 })
 // POST

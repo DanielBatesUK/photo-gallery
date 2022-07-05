@@ -1,0 +1,33 @@
+doctype html
+html(lang='en')
+  head
+    title !{web_title} - Gallery
+    meta(charset='utf-8')
+    link(rel='stylesheet', href='css/default.css')
+    link(rel='stylesheet', href='css/fonts.css')
+    link(rel='icon' type='image/png' href='images/favicon.ico')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js')
+  body
+    section
+      div(class='gallery-heading')
+        h1 !{web_title}
+        br
+        h2 The Gallery
+      div(class='page')
+        each val in photoFiles
+          img(src=('images/thumbnails/' + val + '.jpeg') alt=val class='gallery-thumbnails' onclick='openModal(this);')
+      div(id='gallery-modal' class='modal')
+        span(class='modal-close-button' onclick='closeModal();')
+          |&times;
+        img(id='modal-photo' class='modal-content')
+      div(class="signature")
+        p.
+          Website by Dan
+      script.
+        function openModal(thumbnail) {
+          document.getElementById('gallery-modal').style.display = 'block';
+          document.getElementById('modal-photo').src = 'images/photos/' + thumbnail.alt;
+        }
+        function closeModal() {
+          document.getElementById('gallery-modal').style.display = 'none';
+        }
