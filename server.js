@@ -46,6 +46,40 @@ var storage = multer.diskStorage({
 })
 var upload = multer({ storage: storage })
 
+// Secret hash
+function secretHash(string = process.env.PASSCODE) {
+  return crypto.createHash('md5').update(string + process.env.SESSION_SECRET).digest("hex")
+}
+
+// Authorised
+function authorisationCheck (req, res, next) {
+  console.log(`${timeStamp()} - Authorising HTTP ${req.method} request for 'upload'`)
+  try {
+    // Check query param and redirect
+    if (typeof req.query.p !== 'undefined') {
+      console.log(`${timeStamp()} - Setting user authorisation cookie for 'upload' with supplied passcode parameter`)
+      res.cookie('hash', secretHash(req.query.p), {signed: true, httpOnly: true, sameSite: 'strict', maxAge: 31556926000, secure: true})
+      console.log(`${timeStamp()} - Redirecting back to 'upload' for re-authorisation`)
+      res.redirect(process.env.ROUTE_UPLOAD)
+      res.end()
+      return
+    }
+    if (typeof req.signedCookies.hash !== 'undefined' && req.signedCookies.hash === secretHash()) {
+      //Authorised
+      console.log(`${timeStamp()} - User authorisation cookie for 'upload' is authorised`)
+      next()
+    } else {
+      res.cookie('hash', 'removed', {signed: true, httpOnly: true, sameSite: 'strict', maxAge: 0, secure: true})
+      throw new Error('Incorrect passcode in user authorisation cookie')
+    }
+  } catch (error) {  
+    console.log(`${timeStamp()} - Authorisation Error: ${error.message}`)
+    console.log(`${timeStamp()} - Processing HTTP ${req.method} request for '${req.path}' as 'upload' with page 'passcode-form'`)
+    res.render(process.env.VIEW_UPLOAD, {web_title: process.env.WEB_TITLE, page: 'passcode-form'})
+    res.end()
+  }
+}
+
 // ################################################################################################
 
 // Express
@@ -97,16 +131,13 @@ app.get(process.env.ROUTE_GALLERY, (req, res) => {
 
 // HTTP request for upload page
 // GET
-app.get(process.env.ROUTE_UPLOAD, (req, res) => {
-  console.log(`${timeStamp()} - Processing HTTP ${req.method} request for '${req.path}' as 'upload'`)
-  let passcode
-  if(typeof req.query.p === 'undefined' || req.query.p !== process.env.PASSCODE) {passcode = false} else {passcode = true}
-  console.log(`${timeStamp()} - Passcode check: ${passcode}`)
-  res.render(process.env.VIEW_UPLOAD, {web_title: process.env.WEB_TITLE, passcode: passcode})
+app.get(process.env.ROUTE_UPLOAD, authorisationCheck, (req, res) => {
+  console.log(`${timeStamp()} - Processing HTTP ${req.method} request for '${req.path}' as 'upload' with page 'upload-form'`)
+  res.render(process.env.VIEW_UPLOAD, {web_title: process.env.WEB_TITLE, page: 'upload-form'})
   res.end()
 })
 // POST
-app.post(process.env.ROUTE_UPLOAD, upload.array('photos'), (req, res) => {
+app.post(process.env.ROUTE_UPLOAD, [authorisationCheck, upload.array('photos')], (req, res) => {
   console.log(`${timeStamp()} - Processing HTTP ${req.method} request for '${req.path}' as 'upload'`)
   try{
     if(typeof req.files === 'undefined' || req.files.length === 0) throw new Error('No files selected')
@@ -122,8 +153,9 @@ app.post(process.env.ROUTE_UPLOAD, upload.array('photos'), (req, res) => {
         //.toFile(`${process.env.PATH_THUMBNAILS}${element.filename.replace(/\.[^/.]+$/, ".jpeg")}`)
       console.log(`${timeStamp()} - Upload complete for '${element.filename}'`)    
     })
-    res.send(`Uploaded ${req.files.length} file(s) successfully`)    
-  } catch (error) {
+    console.log(`${timeStamp()} - Processing HTTP ${req.method} request for '${req.path}' as 'upload' with page 'upload-successful'`)
+    res.render(process.env.VIEW_UPLOAD, {web_title: process.env.WEB_TITLE, page: 'upload-successful'})
+    } catch (error) {
     console.log(`${timeStamp()} - Error with upload submission:`)
     console.log(error)
     res.send(error.message)    

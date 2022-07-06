@@ -28,6 +28,20 @@
   font-style: normal;
 }
 
+/* Sans-Serif */
+@font-face {
+  font-family: 'my-sans-serif';
+
+  src:  url('../fonts/dipty_and_dan_sansserif.eot'); 
+  src:  url('../fonts/dipty_and_dan_sansserif?#iefix') format('embedded-opentype'),
+        url('../fonts/dipty_and_dan_sansserif.woff') format('woff'), 
+        url('../fonts/dipty_and_dan_sansserif.ttf')  format('truetype'),
+        url('../fonts/dipty_and_dan_sansserif.svg#my-sans-serif') format('svg');
+
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* Handwriting */
 @font-face {
   font-family: 'my-handwriting';
