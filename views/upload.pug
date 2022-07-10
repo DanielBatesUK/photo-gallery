@@ -52,7 +52,7 @@ html(lang='en')
         function filesChange() {
           if(document.getElementById('upload-files').files.length>0) {
             document.getElementById('upload-photos-button').disabled = false;
-            document.getElementById('upload-photos-button').value = 'Upload ' + document.getElementById('upload-files').files.length + ((document.getElementById('upload-files').files.length>1) ? ' Photos' : ' Photo');
+            document.getElementById('upload-photos-button').value = 'Upload ' + ((document.getElementById('upload-files').files.length>1) ? document.getElementById('upload-files').files.length + ' Photos' : 'Photo');
           } else {
             document.getElementById('upload-photos-button').value = 'No Photos Selected';
             document.getElementById('upload-photos-button').disabled = true;

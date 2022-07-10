@@ -37,7 +37,7 @@ dotevn.config()
 
 // Multer
 var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
+  destination: function (req, file, cb){
     cb(null, process.env.PATH_UPLOADS)
   },
   filename: function (req, file, cb) {
@@ -55,7 +55,7 @@ function secretHash(string = process.env.PASSCODE) {
 function authorisationCheck (req, res, next) {
   console.log(`${timeStamp()} - Authorising HTTP ${req.method} request for 'upload'`)
   try {
-    // Check query param and redirect
+    //Check query param and redirect
     if (typeof req.query.p !== 'undefined') {
       console.log(`${timeStamp()} - Setting user authorisation cookie for 'upload' with supplied passcode parameter`)
       res.cookie('hash', secretHash(req.query.p), {signed: true, httpOnly: true, sameSite: 'strict', maxAge: 31556926000, secure: true})
@@ -92,6 +92,8 @@ app.set('view engine', 'pug')
 
 // ################################################################################################
 
+// ################################################################################################
+
 // HTTP requests all logged
 app.all('*', (req, res, next) => {
   console.log(`${timeStamp()} - Received HTTP ${req.method} request for '${req.path}'`)
@@ -123,9 +125,12 @@ app.post(process.env.ROUTE_PASSCODE, (req, res) => {
 app.get(process.env.ROUTE_GALLERY, (req, res) => {
   console.log(`${timeStamp()} - Processing HTTP ${req.method} request for '${req.path}' as 'gallery'`)
   console.log(`${timeStamp()} - Getting photo filenames:`)
+  let paramStart = 0
+  if(typeof req.query.s !== 'undefined') {paramStart = Number(req.query.s)}
   const photoFilenames = fs.readdirSync(process.env.PATH_PHOTOS)
-  console.log(photoFilenames)
-  res.render(process.env.VIEW_GALLERY, {web_title: process.env.WEB_TITLE, photoFiles: photoFilenames})
+  //console.log(photoFilenames)
+  //console.log(paramStart)
+  res.render(process.env.VIEW_GALLERY, {web_title: process.env.WEB_TITLE, photoFiles: photoFilenames, paramStart: paramStart})
   res.end()
 })
 
@@ -142,15 +147,6 @@ app.post(process.env.ROUTE_UPLOAD, [authorisationCheck, upload.array('photos')],
   try{
     if(typeof req.files === 'undefined' || req.files.length === 0) throw new Error('No files selected')
     req.files.forEach(element => {
-      console.log(`${timeStamp()} - Uploading photo '${element.filename}':`)
-      console.log(element)
-      console.log(`${timeStamp()} - Creating jpeg thumbnail for '${element.filename}'`)
-      sharp(element.path)
-        .resize(300, 200)
-        .toFormat('jpeg')
-        .jpeg({ quality: 80 })
-        .toFile(`${process.env.PATH_THUMBNAILS}${element.filename}.jpeg`)
-        //.toFile(`${process.env.PATH_THUMBNAILS}${element.filename.replace(/\.[^/.]+$/, ".jpeg")}`)
       console.log(`${timeStamp()} - Upload complete for '${element.filename}'`)    
     })
     console.log(`${timeStamp()} - Processing HTTP ${req.method} request for '${req.path}' as 'upload' with page 'upload-successful'`)
@@ -162,6 +158,83 @@ app.post(process.env.ROUTE_UPLOAD, [authorisationCheck, upload.array('photos')],
   }
   res.end()
 })
+
+
+// GET
+app.get('/image/:image', (req, res) => {
+  console.log(`${timeStamp()} - Processing HTTP ${req.method} request for '${req.path}' as 'image file'`)
+  if(req.params.image.startsWith(process.env.PREFIX_THUMBNAILS)) {
+    // Thumbnail image request
+    console.log(`${timeStamp()} - Thumbnail requested for '${req.params.image}'`)
+    // Remove prefix
+    const photoSplit = req.params.image.split(process.env.PREFIX_THUMBNAILS)
+    photoSplit.shift()
+    const photoFile = photoSplit.join()
+    console.log(`${timeStamp()} - Photo file name for thumbnail: '${photoFile}'`)
+    // Check photo file exists
+    if (fs.existsSync(process.env.PATH_PHOTOS + photoFile)) {
+      //file exists
+      console.log(`${timeStamp()} - Photo file exists for thumbnail: '${photoFile}'`)
+      console.log(`${timeStamp()} - Generating thumbnail: '${photoFile}'`)
+      sharp(process.env.PATH_PHOTOS + photoFile)
+      .rotate()
+      .resize(300, 200)
+      .toFormat('jpeg')
+      .jpeg({ quality: 40 })
+      .toBuffer()
+      .then((data) => {
+          //To display the image
+          res.writeHead(200, {
+              'Content-Type': 'image/jpeg',
+              'Content-Length': data.length
+          });
+          return (res.end(data))
+      })
+    } else {
+      console.log(`${timeStamp()} - No Photo file does not exist for '${photoFile}'`)
+      res.send(`no image exists '${req.params.image}'`)
+      res.end()
+    }
+  } else if (req.params.image.startsWith(process.env.PREFIX_PREVIEWS)) {
+    // Preview image request
+    console.log(`${timeStamp()} - Preview requested for '${req.params.image}'`)
+    // Remove prefix
+    const photoSplit = req.params.image.split(process.env.PREFIX_PREVIEWS)
+    photoSplit.shift()
+    const photoFile = photoSplit.join()
+    console.log(`${timeStamp()} - Photo file name for preview: '${photoFile}'`)
+    // Check photo file exists
+    if (fs.existsSync(process.env.PATH_PHOTOS + photoFile)) {
+      //file exists
+      console.log(`${timeStamp()} - Photo file exists for preview: '${photoFile}'`)
+      console.log(`${timeStamp()} - Generating preview: '${photoFile}'`)
+      sharp(process.env.PATH_PHOTOS + photoFile)
+      .rotate()
+      .resize(1080, 1080, { fit: 'inside' })
+      .toFormat('jpeg')
+      .jpeg({ quality: 60 })
+      .toBuffer()
+      .then((data) => {
+          //To display the image
+          res.writeHead(200, {
+              'Content-Type': 'image/jpeg',
+              'Content-Length': data.length
+          });
+          return (res.end(data))
+      })
+    } else {
+      console.log(`${timeStamp()} - No Photo file does not exist for '${photoFile}'`)
+      res.send(`no image exists '${req.params.image}'`)
+      res.end()
+    }
+  } else {
+    console.log(`${timeStamp()} - Photo file does not exist for '${req.params.image}'`)
+    res.send(`image doesn't exist '${req.params.image}'`)
+    res.end()
+
+  }
+})
+
 
 // ################################################################################################
 
