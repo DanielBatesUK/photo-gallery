@@ -50,11 +50,11 @@ html(lang='en')
           Website by Dan
       script.
         $('.handle').on('click', function(){$('nav ul').toggleClass('showing');});
-        currentPhotoID = 0
+        currentPhotoID = 0;
         function openModal(photo) {
           document.getElementById('gallery-modal').style.display = 'block';
           document.getElementById('modal-photo').src = 'images/preview_' + photo.alt;
-          currentPhotoID = Number(photo.id)
+          currentPhotoID = Number(photo.id);
         }
         function closeModal() {
           document.getElementById('gallery-modal').style.display = 'none';
