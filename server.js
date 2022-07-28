@@ -31,8 +31,6 @@ console.log(`${timeStamp()} - Server Starting`);
 
 // ################################################################################################
 
-// ################################################################################################
-
 // Express
 const app = express();
 app.enable('trust proxy');
@@ -68,5 +66,3 @@ app.get(`${process.env.ROUTE_IMAGES}/:image`, routeImages);
 app.listen(process.env.PORT, () => {
   console.log(`${timeStamp()} - HTTP server started and listening to port ${process.env.PORT}`);
 });
-
-// ################################################################################################
