@@ -82,7 +82,7 @@ function routeImages(req, res) {
     }
   } catch (error) {
     console.error(error);
-    res.send(`${timeStamp()} - Index error`);
+    res.send(`${timeStamp()} - Images error`);
     res.end();
   }
 }
