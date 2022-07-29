@@ -18,17 +18,18 @@ body {
   margin:0;
 }
 
+/* #### Section ############################################################################### */
 section {
   margin-top: 5em; 
 }
-@media only screen and (max-device-width: 480px) {
-  section {
-    margin-top: 15em; 
+  @media only screen and (max-device-width: 480px) {
+    section {
+      margin-top: 15em; 
+    }
   }
-}
 
-
-#index-roundel {
+/* #### Index logo (by id) #################################################################### */
+#index-logo {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -40,132 +41,7 @@ section {
   overflow: auto;
   }
 
-div.page {
-  font-family: 'photo-gallery-sans-serif';
-  margin: auto;
-  padding: 0;
-  width: 66%;
-  border: 0 solid #808080;
-  border-radius: 2em;
-  background: #ffffff;
-  box-shadow: 0 0.5em 2em rgba(0, 0, 0, 0.3);
-  text-align: center;
-} 
-@media only screen and (max-device-width: 480px) {
-  div.page {
-    width: 90%;
-  }
-}
-
-div.page a{
-  font-family: 'photo-gallery-sans-serif';
-  display: inline-block;
-  font-size: 1.5em;
-  margin:1em auto 1em auto;
-  background-color: #ffcda5;
-  border: none;
-  color: #404040;
-  padding: 0.5em 1em;
-  text-decoration: none;
-  cursor: pointer;
-  border-radius: 1em;
-  transition: all 0.3s;
-  opacity: 0.7;
-}
-div.page a:hover{
-  opacity: 1;
-  /* background-color: #ffbf80;
-  color: #404040; */
-}
-@media only screen and (max-device-width: 480px) {
-  div.page a {
-    font-size: 3em;
-  }
-}
-
-div.pagination {
-  display: block;
-  font-family: 'photo-gallery-sans-serif';
-  font-size: 1.5em;
-  line-height: 1.5em;
-  vertical-align: middle;
-  margin: 1em auto 1em auto;
-  padding: 0.25em;
-  max-width: 66%;
-  width: 66%;
-  border: 0 solid #808080;
-  border-radius: 2em;
-  background: #ffffff;
-  box-shadow: 0 0.5em 2em rgba(0, 0, 0, 0.3);
-  text-align: center;
-} 
-div.pagination a{
-  font-family: 'photo-gallery-sans-serif';
-  font-size: 1.5em;
-  margin:1em 0.25em;
-  background-color: #ffcda5;
-  border: none;
-  color: #404040;
-  padding: 0.5em 1em;
-  text-decoration: none;
-  cursor: pointer;
-  border-radius: 1em;
-  transition: all 0.3s;
-  opacity: 0.7;
-}
-div.pagination a:hover{
-  opacity: 1;
-  /* background-color: #ffbf80;
-  color: #404040; */
-}
-@media only screen and (max-device-width: 480px) {
-  div.pagination a {
-    font-size: 1.5em;
-    line-height: 1.5em;
-  }
-}
-
-
-
-
-div.signature {
-  margin: auto;
-  padding: 1em 0 2em 0;
-  width: 66%;
-  text-align: center;
-  color: rgba(128, 128, 128, 0.5);
-  font-family: 'photo-gallery-handwriting';
-  font-size: 3em;
-  } 
-  @media only screen and (max-device-width: 480px) {
-    div.signature {
-      padding: 0.25em 0 0.5em 0;
-      font-size: 7em;
-    }
-  }
-
-img.gallery-thumbnails {
-  box-sizing: border-box;
-  border: 0.01em solid rgba(128, 128, 128, 0.5);
-  border-radius: 1em;
-  margin: 1%;
-  max-width: 23%;
-  width:23%;
-  cursor: pointer;
-  transition: 0.3s;
-}
-@media only screen and (max-device-width: 480px) {
-  img.gallery-thumbnails {
-    max-width: 481%;
-    width:48%;
-    }
-}
-
-img.gallery-thumbnails:hover {
-  opacity: 0.7;
-  transform: scale(1.03);
-}
-
+/* #### Headings ############################################################################## */
 h1 {
   display: inline-block;
   margin:0;
@@ -195,6 +71,130 @@ h3 {
   text-align: center;
 }
 
+/* #### Page ################################################################################## */
+div.page {
+  font-family: 'photo-gallery-sans-serif';
+  margin: auto;
+  padding: 0;
+  width: 66%;
+  border: 0 solid #808080;
+  border-radius: 2em;
+  background: #ffffff;
+  box-shadow: 0 0.5em 2em rgba(0, 0, 0, 0.3);
+  text-align: center;
+} 
+  @media only screen and (max-device-width: 480px) {
+    div.page {
+      width: 90%;
+    }
+  }
+
+  div.page a{
+    font-family: 'photo-gallery-sans-serif';
+    display: inline-block;
+    font-size: 1.5em;
+    margin:1em auto 1em auto;
+    background-color: #ffcda5;
+    border: none;
+    color: #404040;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 1em;
+    transition: all 0.3s;
+    opacity: 0.7;
+  }
+    div.page a:hover{
+      opacity: 1;
+    }
+    @media only screen and (max-device-width: 480px) {
+      div.page a {
+        font-size: 3em;
+      }
+    }
+
+/* #### Pagination ############################################################################ */ 
+div.pagination {
+  display: block;
+  font-family: 'photo-gallery-sans-serif';
+  font-size: 1.5em;
+  line-height: 1.5em;
+  margin: 1em auto 1em auto;
+  padding: 0.25em;
+  max-width: 66%;
+  width: 66%;
+  border: 0 solid #808080;
+  border-radius: 2em;
+  background: #ffffff;
+  box-shadow: 0 0.5em 2em rgba(0, 0, 0, 0.3);
+  text-align: center;
+} 
+
+  div.pagination a{
+    font-family: 'photo-gallery-sans-serif';
+    font-size: 1.5em;
+    margin:1em 0.25em;
+    background-color: #ffcda5;
+    border: none;
+    color: #404040;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 1em;
+    transition: all 0.3s;
+    opacity: 0.7;
+  }
+    div.pagination a:hover{
+      opacity: 1;
+    }
+    @media only screen and (max-device-width: 480px) {
+      div.pagination a {
+        font-size: 1.5em;
+        line-height: 1.5em;
+      }
+    }
+
+/* #### Website Signature ##################################################################### */  
+div.signature {
+  margin: auto;
+  padding: 1em 0 2em 0;
+  width: 66%;
+  text-align: center;
+  color: rgba(128, 128, 128, 0.5);
+  font-family: 'photo-gallery-handwriting';
+  font-size: 3em;
+} 
+  @media only screen and (max-device-width: 480px) {
+    div.signature {
+      padding: 0.25em 0 0.5em 0;
+      font-size: 7em;
+    }
+  }
+
+/* #### Gallery Thumbnails ##################################################################### */
+img.gallery-thumbnails {
+  box-sizing: border-box;
+  border: 0.01em solid rgba(128, 128, 128, 0.5);
+  border-radius: 1em;
+  margin: 1%;
+  max-width: 23%;
+  width:23%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+  img.gallery-thumbnails:hover {
+    opacity: 0.7;
+    transform: scale(1.03);
+  }
+  @media only screen and (max-device-width: 480px) {
+    img.gallery-thumbnails {
+      max-width: 481%;
+      width:48%;
+      }
+  }
+
+
+/* #### Modal ################################################################################## */
 .modal {
   display: none;
   position: fixed;
@@ -208,47 +208,44 @@ h3 {
   background-color: rgb(0, 0, 0, 0.9);
 }
 
-.modal-content {
-  display: block;
-  object-fit: contain;
-  max-height: 90%;
-  max-width: 90%;
-  width: 90%;
-  height: 90%;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-}
-
-.modal-close-button {
-  position: absolute;
-  z-index: 3;
-  top: 15px;
-  right: 35px;
-  color: #f1f1f1;
-  font-size: 40px;
-  font-weight: lighter;
-  transition: 0.3s;
-}
-@media only screen and (max-device-width: 480px) {
-  .modal-close-button {
-    font-size: 10em;
+  .modal-content {
+    display: block;
+    object-fit: contain;
+    max-height: 90%;
+    max-width: 90%;
+    width: 90%;
+    height: 90%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
   }
-}
 
-.modal-close-button:hover,
-.modal-close-button:focus {
-  color: #b0b0b0;
-  text-decoration: none;
-  cursor: pointer;
-}
+  .modal-close-button {
+    position: absolute;
+    z-index: 3;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: lighter;
+    transition: 0.3s;
+  }
+    .modal-close-button:hover,
+    .modal-close-button:focus {
+      color: #b0b0b0;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    @media only screen and (max-device-width: 480px) {
+      .modal-close-button {
+        font-size: 10em;
+      }
+    }
 
-
-/* #### NAVIGATION ############################################################################# */
-
+/* #### Navigation Bar ######################################################################## */
 nav{
 	position:fixed;
   top:0;
@@ -258,87 +255,76 @@ nav{
   font-size: 1.25em;
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.3);
   z-index: 1;
-
 }	
+  nav a {
+    color: #808080;
+    text-decoration: none;
+  }
 
-nav a {
-  color: #808080;
-  text-decoration: none;
-}
+  nav ul{
+    font-family: 'photo-gallery-serif';
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    color: #808080;
+    background: #f0f0f0;
+    text-align: center;
+    -webkit-transition: max-height 0.4s;
+    -ms-transition: max-height 0.4s;
+    -moz-transition: max-height 0.4s;
+    -o-transition: max-height 0.4s;
+    transition: max-height 0.4s;
+  }
+    nav ul li{
+      display: inline-block;
+      padding: 0.75em 3em 0.75em 3em;
+      transition: all 0.3s;
+    }
+      nav ul li:hover{
+        color: #606060;
+        background: #ffffff;
+        cursor: pointer;
+        }
 
-nav ul{
-	font-family: 'photo-gallery-serif';
-  overflow: hidden;
-	margin: 0;
-	padding: 0;
-	color: #808080;
-	background: #f0f0f0;
-	text-align: center;
-	-webkit-transition: max-height 0.4s;
-	-ms-transition: max-height 0.4s;
-	-moz-transition: max-height 0.4s;
-	-o-transition: max-height 0.4s;
-	transition: max-height 0.4s;
-}
-
-nav ul li{
-	display: inline-block;
-	padding: 0.75em 3em 0.75em 3em;
-  transition: all 0.3s;
-}
-
-nav ul li:hover{
-	color: #606060;
-	background: #ffffff;
-  cursor: pointer;
-	}
-	
 .handle{
-	display: none;
-	box-sizing: border-box;
-	width: 100%;
-	padding: 0.5em;
-	color: #b0b0b0;
-	background: #f0f0f0;
-	cursor: pointer;
+  display: none;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.5em;
+  color: #b0b0b0;
+  background: #f0f0f0;
+  cursor: pointer;
 }
 
-/* #### PHONE NAVIGATION ############################################################################# */
-
+/* #### Navigation (for phones) ############################################################### */
 @media only screen and (max-device-width: 480px) {
 	nav {
     text-align: left;
   }
-  
-  nav ul{
-		max-height: 0px;
-    font-family: 'photo-gallery-sans-serif';
-    font-size: 3em;
-	} 
+    nav ul{
+      max-height: 0px;
+      font-family: 'photo-gallery-sans-serif';
+      font-size: 3em;
+    } 
+    nav ul li{
+      box-sizing: border-box;
+      width: 100%;
+      padding: 16px;
+      text-align: left;
+      border-bottom: 1px solid #808080;
+    }
 	
-	.showing{
-		max-height: 28em;
-	}
-	
-	nav ul li{
-		box-sizing: border-box;
-		width: 100%;
-		padding: 16px;
-		text-align: left;
-    border-bottom: 1px solid #808080;
-	}
-	
-	.handle{
+  .handle{
 		display: block;
 	}
-
+  
+  .showing{
+		max-height: 28em;
+	}
 
 }
 
-
-
-/* #### HAMBURGER ############################################################################## */
-
+/* #### Navigation Hamburger (for phones) ##################################################### */
 .hamburger {
   position: relative;
   display: inline-block;
@@ -348,19 +334,16 @@ nav ul li:hover{
   border-top: 0.3em solid #b0b0b0;
   border-bottom: 0.3em solid #b0b0b0;
 }
+  .hamburger:before {
+    content: "";
+    position: absolute;
+    top: 0.55em;
+    left: 0px;
+    width: 100%;
+    border-top: 0.3em solid #b0b0b0;
+  }
 
-.hamburger:before {
-  content: "";
-  position: absolute;
-  top: 0.55em;
-  left: 0px;
-  width: 100%;
-  border-top: 0.3em solid #b0b0b0;
-}
-
-
-
-/* ####### FORMS #################### */
+/* #### Forms ################################################################################# */
 input[type=text] {
   font-family: 'photo-gallery-sans-serif';
   display: block;
@@ -368,7 +351,6 @@ input[type=text] {
   border: 2px solid #e0e0e0;
   border-radius: 1em;
   padding: 1em;
-  /* box-shadow:0 0 1em 2em rgba(0,0,0,0.03) */
   font-size: 1.5em;
 }
 
@@ -387,22 +369,20 @@ input[type=button], input[type=submit], input[type=reset] {
   border-radius: 1em;
   opacity: 0.7;
 }
-@media only screen and (max-device-width: 480px) {
-  label, input[type=text], input[type=button], input[type=submit], input[type=reset] {
-    font-size: 3em;
+  input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
+    opacity: 1;
   }
-}
-
-input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
-  opacity: 1;
-}
-
-input[type=button]:disabled, input[type=submit]:disabled, input[type=reset]:disabled {
-  background-color: #ffcdcd;
-  color: #b0b0b0;
-  cursor: not-allowed;
-}
-
+  input[type=button]:disabled, input[type=submit]:disabled, input[type=reset]:disabled {
+    background-color: #ffcdcd;
+    color: #b0b0b0;
+    cursor: not-allowed;
+  }
+  @media only screen and (max-device-width: 480px) {
+    label, input[type=text], input[type=button], input[type=submit], input[type=reset] {
+      font-size: 3em;
+    }
+  }
+  
 label {
   font-family: 'photo-gallery-sans-serif';
   font-size: 2em;
@@ -413,7 +393,6 @@ label {
 form {
   padding: 2em;
 }
-
 
 input[type=file] {
   display:none;
@@ -434,12 +413,11 @@ input[type=file] {
   border-radius: 1em;
   opacity: 0.7;
 }
-@media only screen and (max-device-width: 480px) {
-  #select-photos-label {
-    font-size: 3em;
+  #select-photos-label:hover{
+    opacity: 1;
   }
-}
-
-#select-photos-label:hover{
-  opacity: 1;
-}
+  @media only screen and (max-device-width: 480px) {
+    #select-photos-label {
+      font-size: 3em;
+    }
+  }
