@@ -1,61 +1,39 @@
-doctype html
-html(lang='en')
-  head
-    title !{web_title} - Gallery
-    meta(charset='utf-8')
-    link(rel='stylesheet', href='css/default.css')
-    link(rel='stylesheet', href='css/fonts.css')
-    link(rel='icon' type='image/png' href='images/favicon.ico')
-    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js')
-  body
-    nav
-      ul
-        a(href='/') 
-          li Home
-        a(href='/gallery')
-          li The Gallery
-        a(href='/upload')
-          li Upload Photos
-      div(class='handle')
-        span(class='hamburger')
-    section
-      div(class='gallery-heading')
-        h1 !{web_title}
-        br
-        h2 The Gallery
-      div(class='page')
-        - photosCount = 0
-        - photosTotal = photoFiles.length
-        - photosPerPage = 20
-        - photosStart = paramStart
-        - photosTotalPages = Math.ceil(photosTotal / photosPerPage)
-        - photosCurrentPage = Math.floor(photosStart / photosPerPage) + 1
-        - photosEnd = photosStart + photosPerPage
-        - photosNextPage = ((photosStart + photosPerPage) < photosTotal ? (photosStart + photosPerPage) : photosStart)
-        - photosPrevPage = ((photosStart - photosPerPage) < 0 ? 0 : (photosStart - photosPerPage))
-        while photosCount < photosPerPage
-          - if (typeof(photoFiles[photosStart + photosCount]) !== 'undefined'){
-            img(id=photosCount src=('images/thumbnail_' + photoFiles[photosStart + photosCount]) alt=photoFiles[photosStart + photosCount] class='gallery-thumbnails' onclick='openModal(this);')
-          -}
-          - photosCount++        
-      div(id='gallery-modal' class='modal')
-        span(class='modal-close-button' onclick='closeModal();' title='close')
-          |&times;
-        img(id='modal-photo' class='modal-content')
-      div(class="pagination")
-        p.
-          #[a(href='gallery?s=0') <<] #[a(href='gallery?s=' + photosPrevPage) <] !{photosCurrentPage} of !{photosTotalPages} #[a(href='gallery?s=' + photosNextPage) >] #[a(href='gallery?s=' + ((photosTotalPages-1) * photosPerPage)) >>]
-      div(class="signature")
-        p.
-          Website by Dan
-      script.
-        $('.handle').on('click', function(){$('nav ul').toggleClass('showing');});
-        currentPhotoID = 0;
-        function openModal(photo) {
-          document.getElementById('gallery-modal').style.display = 'block';
-          document.getElementById('modal-photo').src = 'images/preview_' + photo.alt;
-          currentPhotoID = Number(photo.id);
-        }
-        function closeModal() {
-          document.getElementById('gallery-modal').style.display = 'none';
-        }
+include layout_header
+div(class='gallery-heading')
+  h1 !{web_title}
+  br
+  h2 The Gallery
+div(class='page')
+  - photosCount = 0
+  - photosTotal = photoFiles.length
+  - photosPerPage = 20
+  - photosStart = paramStart
+  - photosTotalPages = Math.ceil(photosTotal / photosPerPage)
+  - photosCurrentPage = Math.floor(photosStart / photosPerPage) + 1
+  - photosEnd = photosStart + photosPerPage
+  - photosNextPage = ((photosStart + photosPerPage) < photosTotal ? (photosStart + photosPerPage) : photosStart)
+  - photosPrevPage = ((photosStart - photosPerPage) < 0 ? 0 : (photosStart - photosPerPage))
+  while photosCount < photosPerPage
+    - if (typeof(photoFiles[photosStart + photosCount]) !== 'undefined'){
+      img(id=photosCount src=('images/thumbnail_' + photoFiles[photosStart + photosCount]) alt=photoFiles[photosStart + photosCount] class='gallery-thumbnails' onclick='openModal(this);')
+    -}
+    - photosCount++        
+div(id='gallery-modal' class='modal')
+  span(class='modal-close-button' onclick='closeModal();' title='close')
+    |&times;
+  img(id='modal-photo' class='modal-content')
+div(class="pagination")
+  p.
+    #[a(href='gallery?s=0') <<] #[a(href='gallery?s=' + photosPrevPage) <] !{photosCurrentPage} of !{photosTotalPages} #[a(href='gallery?s=' + photosNextPage) >] #[a(href='gallery?s=' + ((photosTotalPages-1) * photosPerPage)) >>]
+script.
+  currentPhotoID = 0;
+  function openModal(photo) {
+    document.getElementById('gallery-modal').style.display = 'block';
+    document.getElementById('modal-photo').src = 'images/preview_' + photo.alt;
+    currentPhotoID = Number(photo.id);
+  }
+  function closeModal() {
+    document.getElementById('gallery-modal').style.display = 'none';
+  }
+include layout_signature
+include layout_footer

@@ -1,24 +1,3 @@
-doctype html
-html(lang='en')
-	head
-		title !{web_title}
-		meta(charset='utf-8')
-		link(rel='stylesheet', href='css/default.css')
-		link(rel='stylesheet', href='css/fonts.css')
-		link(rel='icon' type='image/png' href='images/favicon.ico')
-		script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js')
-	body
-		nav
-			ul
-				a(href='/') 
-					li Home
-				a(href='/gallery')
-					li The Gallery
-				a(href='/upload')
-					li Upload Photos
-			div(class='handle')
-				span(class='hamburger')
-		section
-			img(id='index-logo' src='images/logo_800x800.png' alt=web_title)
-		script.
-			$('.handle').on('click', function(){$('nav ul').toggleClass('showing');});
+include layout_header
+img(id='index-logo' src='images/logo_800x800.png' alt=web_title)
+include layout_footer

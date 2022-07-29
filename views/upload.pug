@@ -1,60 +1,39 @@
-doctype html
-html(lang='en')
-  head
-    title !{web_title} - Upload Photos
-    meta(charset='utf-8')
-    link(rel='stylesheet', href='css/default.css')
-    link(rel='stylesheet', href='css/fonts.css')
-    link(rel='icon' type='image/png' href='images/favicon.ico')
-    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js')
-  body
-    nav
-      ul
-        a(href='/') 
-          li Home
-        a(href='/gallery')
-          li The Gallery
-        a(href='/upload')
-          li Upload Photos
-      div(class='handle')
-        span(class='hamburger')
-    section
-      h1 !{web_title}
+include layout_header
+h1 !{web_title}
+br
+h2 Upload Photos
+div(class='page')
+  if page === 'upload-form'
+    form(action='/upload' method='POST' enctype='multipart/form-data')
+      label(id='select-photos-label') Select Photos
+        input(type='file' id='upload-files' accept='image/*' name='photos' multiple onchange='filesChange();')
+      input(type='submit' id='upload-photos-button' value='No Photos Selected' disabled)
+    a(href='/gallery') Visit the gallery
+  else if page === 'upload-successful'
+      h3 Thank you!
       br
-      h2 Upload Photos
-      div(class='page')
-        if page === 'upload-form'
-          form(action='/upload' method='POST' enctype='multipart/form-data')
-            label(id='select-photos-label') Select Photos
-              input(type='file' id='upload-files' accept='image/*' name='photos' multiple onchange='filesChange();')
-            input(type='submit' id='upload-photos-button' value='No Photos Selected' disabled)
-          a(href='/gallery') Visit the gallery
-        else if page === 'upload-successful'
-            h3 Thank you!
-            br
-            p.
-              Your photos have been uploaded successfully
-            a(href='/gallery') Visit the gallery
-            br
-            a(href='/upload') Upload more photos
-        else
-          form(action='/upload' method='GET' enctype='multipart/form-data')
-            label(for='p')
-              | Enter Passcode
-            input(type='text' placeholder='passcode' name='p')
-            input(type='submit' value='Login')
-          a(href='/gallery') Visit the gallery
-      div(class="signature")
-        p.
-          Website by Dan
-      script.
-        $('.handle').on('click', function(){$('nav ul').toggleClass('showing');});
-        function filesChange() {
-          if(document.getElementById('upload-files').files.length>0) {
-            document.getElementById('upload-photos-button').disabled = false;
-            document.getElementById('upload-photos-button').value = 'Upload ' + ((document.getElementById('upload-files').files.length>1) ? document.getElementById('upload-files').files.length + ' Photos' : 'Photo');
-          } else {
-            document.getElementById('upload-photos-button').value = 'No Photos Selected';
-            document.getElementById('upload-photos-button').disabled = true;
-          }
-        }
+      p.
+        Your photos have been uploaded successfully
+      a(href='/gallery') Visit the gallery
+      br
+      a(href='/upload') Upload more photos
+  else
+    form(action='/upload' method='GET' enctype='multipart/form-data')
+      label(for='p')
+        | Enter Passcode
+      input(type='text' placeholder='passcode' name='p')
+      input(type='submit' value='Login')
+    a(href='/gallery') Visit the gallery
+script.
+  $('.handle').on('click', function(){$('nav ul').toggleClass('showing');});
+  function filesChange() {
+    if(document.getElementById('upload-files').files.length>0) {
+      document.getElementById('upload-photos-button').disabled = false;
+      document.getElementById('upload-photos-button').value = 'Upload ' + ((document.getElementById('upload-files').files.length>1) ? document.getElementById('upload-files').files.length + ' Photos' : 'Photo');
+    } else {
+      document.getElementById('upload-photos-button').value = 'No Photos Selected';
+      document.getElementById('upload-photos-button').disabled = true;
+    }
+  }
+include layout_signature
+include layout_footer
