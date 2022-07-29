@@ -41,7 +41,7 @@ section {
   }
 
 div.page {
-  font-family: 'my-sans-serif';
+  font-family: 'photo-gallery-sans-serif';
   margin: auto;
   padding: 0;
   width: 66%;
@@ -58,7 +58,7 @@ div.page {
 }
 
 div.page a{
-  font-family: 'my-sans-serif';
+  font-family: 'photo-gallery-sans-serif';
   display: inline-block;
   font-size: 1.5em;
   margin:1em auto 1em auto;
@@ -85,7 +85,7 @@ div.page a:hover{
 
 div.pagination {
   display: block;
-  font-family: 'my-sans-serif';
+  font-family: 'photo-gallery-sans-serif';
   font-size: 1.5em;
   line-height: 1.5em;
   vertical-align: middle;
@@ -100,7 +100,7 @@ div.pagination {
   text-align: center;
 } 
 div.pagination a{
-  font-family: 'my-sans-serif';
+  font-family: 'photo-gallery-sans-serif';
   font-size: 1.5em;
   margin:1em 0.25em;
   background-color: #ffcda5;
@@ -134,7 +134,7 @@ div.signature {
   width: 66%;
   text-align: center;
   color: rgba(128, 128, 128, 0.5);
-  font-family: 'my-handwriting';
+  font-family: 'photo-gallery-handwriting';
   font-size: 3em;
   } 
   @media only screen and (max-device-width: 480px) {
@@ -171,7 +171,7 @@ h1 {
   margin:0;
   font-size: 5em;
   color: #404040;
-  font-family: 'my-script';
+  font-family: 'photo-gallery-script';
   text-align: center;
   border-bottom: 2px solid #808080;
 }
@@ -181,7 +181,7 @@ h2 {
   margin:0.25em 0 1em 0;
   font-size: 3em;
   color: #808080;
-  font-family: 'my-serif';
+  font-family: 'photo-gallery-serif';
   text-align: center;
 }
 
@@ -190,7 +190,7 @@ h3 {
   margin:0.25em 0 0.25em 0;
   font-size: 10em;
   color: #b0b0b0;
-  font-family: 'my-handwriting';
+  font-family: 'photo-gallery-handwriting';
   font-weight: normal;
   text-align: center;
 }
@@ -267,7 +267,7 @@ nav a {
 }
 
 nav ul{
-	font-family: 'my-serif';
+	font-family: 'photo-gallery-serif';
   overflow: hidden;
 	margin: 0;
 	padding: 0;
@@ -312,7 +312,7 @@ nav ul li:hover{
   
   nav ul{
 		max-height: 0px;
-    font-family: 'my-sans-serif';
+    font-family: 'photo-gallery-sans-serif';
     font-size: 3em;
 	} 
 	
@@ -362,7 +362,7 @@ nav ul li:hover{
 
 /* ####### FORMS #################### */
 input[type=text] {
-  font-family: 'my-sans-serif';
+  font-family: 'photo-gallery-sans-serif';
   display: block;
   margin:1em auto;
   border: 2px solid #e0e0e0;
@@ -374,7 +374,7 @@ input[type=text] {
 
 input[type=button], input[type=submit], input[type=reset] {
   transition: all 0.3s;
-  font-family: 'my-sans-serif';
+  font-family: 'photo-gallery-sans-serif';
   font-size: 1.5em;
   display: block;
   margin:1em auto;
@@ -404,7 +404,7 @@ input[type=button]:disabled, input[type=submit]:disabled, input[type=reset]:disa
 }
 
 label {
-  font-family: 'my-sans-serif';
+  font-family: 'photo-gallery-sans-serif';
   font-size: 2em;
   color: #808080;
   display: block;
@@ -421,7 +421,7 @@ input[type=file] {
 
 #select-photos-label {
   transition: all 0.3s;
-  font-family: 'my-sans-serif';
+  font-family: 'photo-gallery-sans-serif';
   font-size: 1.5em;
   display: inline-block;
   margin:1em auto;
