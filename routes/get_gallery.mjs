@@ -16,7 +16,7 @@ function routeGallery(req, res) {
     let paramStart = 0;
     if (typeof req.query.s !== 'undefined') { paramStart = Number(req.query.s); }
     const photoFilenames = fs.readdirSync(process.env.PATH_UPLOADS);
-    res.render(process.env.VIEW_GALLERY, { web_title: process.env.WEB_TITLE, photoFiles: photoFilenames, paramStart });
+    res.render(process.env.VIEW_GALLERY, { web_title: process.env.WEB_TITLE, web_signature: process.env.WEB_SIGNATURE, photoFiles: photoFilenames, paramStart });
     res.end();
   } catch (error) {
     console.error(error);

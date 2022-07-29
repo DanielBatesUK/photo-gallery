@@ -14,7 +14,7 @@ function routePostUpload(req, res) {
       console.log(`${timeStamp()} - Upload complete for '${element.filename}'`);
     });
     console.log(`${timeStamp()} - Processing HTTP ${req.method} request for '${req.path}' as 'upload' with page 'upload-successful'`);
-    res.render(process.env.VIEW_UPLOAD, { web_title: process.env.WEB_TITLE, page: 'upload-successful' });
+    res.render(process.env.VIEW_UPLOAD, { web_title: process.env.WEB_TITLE, web_signature: process.env.WEB_SIGNATURE, page: 'upload-successful' });
     res.end();
   } catch (error) {
     console.log(error);
