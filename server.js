@@ -4,13 +4,13 @@
 import dotevn from 'dotenv';
 import express from 'express';
 import cookieParser from 'cookie-parser';
-import fs from 'fs';
+// import fs from 'fs';
 
 // My Imports
 import timeStamp from './lib/time_stamp.mjs';
 import upload from './lib/upload_settings.mjs';
 import authorisationCheck from './lib/authorisation_check.mjs';
-import createDateSeconds from './lib/createdate_seconds.mjs';
+// import createDateSeconds from './lib/createdate_seconds.mjs';
 
 // ################################################################################################
 
@@ -71,7 +71,10 @@ app.listen(process.env.PORT, () => {
 
 // ################################################################################################
 
-const photoFilenames = fs.readdirSync(process.env.PATH_UPLOADS);
-photoFilenames.forEach(async (value) => {
-  console.log(`CreateDate filename: '${await createDateSeconds(`${process.env.PATH_UPLOADS}${value}`)}-${value}'`);
-});
+// const photoFilenames = fs.readdirSync(process.env.PATH_UPLOADS);
+// photoFilenames.forEach(async (value) => {
+//  console.log(`rename : ${process.env.PATH_UPLOADS}${value}, ${process.env.PATH_UPLOADS}${await createDateSeconds(`${process.env.PATH_UPLOADS}${value}`)}-${value}`);
+//  fs.rename(`${process.env.PATH_UPLOADS}${value}`, `${process.env.PATH_UPLOADS}${await createDateSeconds(`${process.env.PATH_UPLOADS}${value}`)}-${value}`, (error) => {
+//    if (error) console.log(error);
+//  });
+// });
