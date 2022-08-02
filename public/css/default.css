@@ -177,6 +177,8 @@ img.gallery-thumbnails {
   border: 0.01em solid rgba(128, 128, 128, 0.5);
   border-radius: 1em;
   margin: 1%;
+  width:300px;
+  height:200px;
   max-width: 23%;
   width:23%;
   cursor: pointer;
