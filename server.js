@@ -4,7 +4,6 @@
 import dotevn from 'dotenv';
 import express from 'express';
 import cookieParser from 'cookie-parser';
-// import fs from 'fs';
 
 // My Imports
 import timeStamp from './lib/time_stamp.mjs';
@@ -70,11 +69,3 @@ app.listen(process.env.PORT, () => {
 });
 
 // ################################################################################################
-
-// const photoFilenames = fs.readdirSync(process.env.PATH_UPLOADS);
-// photoFilenames.forEach(async (value) => {
-//  console.log(`rename : ${process.env.PATH_UPLOADS}${value}, ${process.env.PATH_UPLOADS}${await createDateSeconds(`${process.env.PATH_UPLOADS}${value}`)}-${value}`);
-//  fs.rename(`${process.env.PATH_UPLOADS}${value}`, `${process.env.PATH_UPLOADS}${await createDateSeconds(`${process.env.PATH_UPLOADS}${value}`)}-${value}`, (error) => {
-//    if (error) console.log(error);
-//  });
-// });
