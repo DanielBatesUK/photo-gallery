@@ -33,13 +33,13 @@ div(id='gallery-modal' class='modal')
   |     </g>
   | </svg>
   |</a>
-  |<svg id="modal-next-button" viewBox="0 0 300 300" version="1.1" xmlns="http://www.w3.org/2000/svg"  onclick="swipeModal(1);" alt="Next">
+  |<svg id="modal-next-button" viewBox="0 0 300 300" version="1.1" xmlns="http://www.w3.org/2000/svg"  onclick="updateModal(1);" alt="Next">
   | <title>Next</title>
   | <g>
   |   <path fill="#ffffff" opacity="1.00" d=" M 140.59 0.00 L 159.38 0.00 C 166.21 0.97 173.12 1.46 179.87 3.00 C 211.84 9.30 241.36 26.72 262.77 51.23 C 282.54 73.69 295.33 102.19 298.86 131.90 C 299.48 138.02 299.58 144.18 300.00 150.32 L 300.00 151.68 C 299.37 160.85 299.15 170.11 297.09 179.11 C 290.98 210.63 274.23 239.89 250.38 261.35 C 228.18 281.51 199.80 294.80 170.04 298.67 C 166.49 299.10 162.94 299.49 159.40 300.00 L 140.60 300.00 C 129.27 298.77 117.95 297.09 106.99 293.85 C 78.33 285.17 52.29 267.83 33.51 244.47 C 18.10 225.61 7.31 202.89 2.81 178.93 C 1.36 172.50 0.94 165.91 0.00 159.40 L 0.00 140.61 C 0.91 134.37 1.40 128.06 2.66 121.88 C 6.88 98.55 17.12 76.36 31.75 57.75 C 50.67 33.28 77.42 15.09 107.00 6.15 C 117.96 2.96 129.27 1.30 140.59 0.00 M 109.45 67.53 C 106.28 68.43 104.05 71.63 104.29 74.93 C 104.24 123.30 104.33 171.68 104.25 220.06 C 104.23 222.39 104.41 225.06 106.43 226.60 C 108.96 229.32 113.30 229.26 116.17 227.13 C 152.43 202.71 188.74 178.35 224.98 153.90 C 228.69 151.71 229.71 146.32 227.01 142.96 C 224.92 140.65 222.10 139.20 219.56 137.46 C 186.08 115.29 152.62 93.07 119.19 70.83 C 116.34 68.92 113.12 66.37 109.45 67.53 Z" />
   | </g>
   |</svg>
-  |<svg id="modal-previous-button" viewBox="0 0 300 300" version="1.1" xmlns="http://www.w3.org/2000/svg"  onclick="swipeModal(-1);" alt="Previous">
+  |<svg id="modal-previous-button" viewBox="0 0 300 300" version="1.1" xmlns="http://www.w3.org/2000/svg"  onclick="updateModal(-1);" alt="Previous">
   | <title>Previous</title>
   | <g>
   |   <path fill="#ffffff" opacity="1.00" d=" M 146.49 0.00 L 153.51 0.00 C 184.99 0.66 216.21 11.51 241.09 30.84 C 269.42 52.39 289.77 84.30 296.86 119.22 C 298.81 128.17 299.68 137.32 300.00 146.46 L 300.00 153.54 C 299.33 185.01 288.48 216.23 269.15 241.10 C 248.03 268.86 216.95 288.97 182.83 296.42 C 173.21 298.64 163.35 299.69 153.48 300.00 L 146.50 300.00 C 115.25 299.31 84.25 288.61 59.48 269.49 C 31.22 248.17 10.82 216.55 3.50 181.88 C 1.23 171.94 0.38 161.74 0.00 151.57 L 0.00 150.41 C 0.27 139.35 1.13 128.26 3.65 117.46 C 11.08 83.01 31.45 51.63 59.56 30.44 C 84.31 11.37 115.28 0.69 146.49 0.00 M 186.43 67.58 C 185.52 67.90 184.67 68.32 183.87 68.85 C 147.77 92.78 111.69 116.75 75.60 140.68 C 72.45 142.43 70.48 146.39 71.77 149.87 C 72.52 152.36 74.84 153.80 76.86 155.18 C 111.56 178.50 146.24 201.84 180.92 225.18 C 183.33 226.80 185.86 228.90 188.97 228.66 C 192.76 228.52 196.06 224.99 195.74 221.16 C 195.74 172.44 195.78 123.71 195.72 74.99 C 196.19 70.08 191.10 66.05 186.43 67.58 Z" />
@@ -63,7 +63,7 @@ script.
     document.getElementById('gallery-modal').style.display = 'none';
     document.body.style.overflow = 'auto';
   }
-  function swipeModal(direction) {
+  function updateModal(direction) {
     if( (currentPhotoID + direction) >= 0 && (currentPhotoID + direction) < !{photosPerPage}) {
       if(document.getElementById((currentPhotoID + direction))) openModal(document.getElementById((currentPhotoID + direction)));
     } else {
@@ -87,15 +87,15 @@ script.
     swipeGesture();
   }, false);
   function swipeGesture() {
-      if (touchEndX < (touchStartX - 75)) swipeModal(1);
-      if (touchEndX > (touchStartX + 75)) swipeModal(-1);      
+      if (touchEndX < (touchStartX - 75)) updateModal(1);
+      if (touchEndX > (touchStartX + 75)) updateModal(-1);      
   }
 
   // Arrow keys on Modal
   function arrowModal(event) {
     if(document.getElementById('gallery-modal').style.display === 'block') {
-      if(event.key === 'ArrowRight') swipeModal(1);
-      if(event.key === 'ArrowLeft') swipeModal(-1);
+      if(event.key === 'ArrowRight') updateModal(1);
+      if(event.key === 'ArrowLeft') updateModal(-1);
     }
   }
   document.onkeydown = arrowModal;
