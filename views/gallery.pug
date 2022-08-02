@@ -91,6 +91,15 @@ script.
       if (touchEndX > (touchStartX + 75)) swipeModal(-1);      
   }
 
+  // Arrow keys on Modal
+  function arrowModal(event) {
+    if(document.getElementById('gallery-modal').style.display === 'block') {
+      if(event.key === 'ArrowRight') swipeModal(1);
+      if(event.key === 'ArrowLeft') swipeModal(-1);
+    }
+  }
+  document.onkeydown = arrowModal;
+
   // Modal open from previous page
   let modalParam = !{paramModalTime};
   if(modalParam !== false) {
