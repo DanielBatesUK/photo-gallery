@@ -71,7 +71,7 @@ script.
     }
   }
   function changePageModal(direction) {
-    if( (!{photosCurrentPage} + direction) >= 1 && (!{photosCurrentPage} + direction) < !{photosTotalPages}) {
+    if( (!{photosCurrentPage} + direction) >= 1 && (!{photosCurrentPage} + direction) < (!{photosTotalPages} + 1)) {
       let posNeg = '+';
       if (Math.sign(direction) === -1) posNeg = '-'; 
       window.location.href = '?s=' + (((!{photosCurrentPage} + direction)-1) * !{photosPerPage}) + '&m=' + posNeg + Date.now();
