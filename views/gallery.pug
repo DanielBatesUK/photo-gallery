@@ -15,7 +15,7 @@ div(class='page')
   - photosPrevPage = ((photosStart - photosPerPage) < 0 ? 0 : (photosStart - photosPerPage))
   while photosCount < photosPerPage
     - if (typeof(photoFiles[photosStart + photosCount]) !== 'undefined'){
-      img(id=photosCount src=('images/thumbnail_' + photoFiles[photosStart + photosCount]) alt=photoFiles[photosStart + photosCount] class='gallery-thumbnails' onclick='openModal(this);')
+      img(id=photosCount src=('images/' + prefix_thumbnails + photoFiles[photosStart + photosCount]) alt=photoFiles[photosStart + photosCount] class='gallery-thumbnails' onclick='openModal(this);')
     -}
     - photosCount++        
 div(id='gallery-modal' class='modal')
@@ -29,7 +29,7 @@ script.
   currentPhotoID = 0;
   function openModal(photo) {
     document.getElementById('gallery-modal').style.display = 'block';
-    document.getElementById('modal-photo').src = 'images/preview_' + photo.alt;
+    document.getElementById('modal-photo').src = 'images/' + prefix_thumbnails + photo.alt;
     currentPhotoID = Number(photo.id);
   }
   function closeModal() {
