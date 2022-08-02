@@ -188,7 +188,7 @@ img.gallery-thumbnails {
   }
   @media only screen and (max-device-width: 480px) {
     img.gallery-thumbnails {
-      max-width: 481%;
+      max-width: 48%;
       width:48%;
       }
   }
