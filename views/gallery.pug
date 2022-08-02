@@ -21,6 +21,10 @@ div(class='page')
 div(id='gallery-modal' class='modal')
   span(class='modal-close-button' onclick='closeModal();' title='close')
     |&times;
+  span(class='modal-previous-button' onclick='swipeModal(-1);' title='previous')
+    |&larr;
+  span(class='modal-next-button' onclick='swipeModal(1);' title='next')
+    |&rarr;
   img(id='modal-photo' class='modal-content')
 div(class="pagination")
   p.
@@ -34,6 +38,24 @@ script.
   }
   function closeModal() {
     document.getElementById('gallery-modal').style.display = 'none';
+  }
+  function swipeModal(direction) {
+    if( (currentPhotoID + direction) > 0 && (currentPhotoID + direction) < !{photosPerPage}) {
+      openModal(document.getElementById((currentPhotoID + direction)))
+    }
+  }
+
+  // Swiping controls on Modal
+  document.getElementById('gallery-modal').addEventListener('touchstart', function (event) {
+    touchStartX = event.changedTouches[0].screenX;
+  }, false);
+  document.getElementById('gallery-modal').addEventListener('touchend', function (event) {
+    touchEndX = event.changedTouches[0].screenX;
+    swipeGesture();
+  }, false);
+  function swipeGesture() {
+      if (touchEndX < (touchStartX - 75)) swipeModal(1);
+      if (touchEndX > (touchStartX + 75)) swipeModal(-1);      
   }
 include layout_signature
 include layout_footer

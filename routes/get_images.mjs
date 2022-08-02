@@ -19,9 +19,9 @@ function generateThumbnail(req, res, photoFilename) {
   console.log(`${timeStamp()} - Generating thumbnail: '${photoFilename}'`);
   sharp(process.env.PATH_UPLOADS + photoFilename)
     .rotate()
-    .resize(300, 200)
+    .resize(256, 192)
     .toFormat('jpeg')
-    .jpeg({ quality: 40 })
+    .jpeg({ quality: 30 })
     .toBuffer()
     .then((data) => {
     // To display the image

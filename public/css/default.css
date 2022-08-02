@@ -177,8 +177,7 @@ img.gallery-thumbnails {
   border: 0.01em solid rgba(128, 128, 128, 0.5);
   border-radius: 1em;
   margin: 1%;
-  width:300px;
-  height:200px;
+  width:256px;
   max-width: 23%;
   width:23%;
   cursor: pointer;
@@ -235,18 +234,49 @@ img.gallery-thumbnails {
     font-weight: lighter;
     transition: 0.3s;
   }
-    .modal-close-button:hover,
-    .modal-close-button:focus {
-      color: #b0b0b0;
-      text-decoration: none;
-      cursor: pointer;
-    }
-    @media only screen and (max-device-width: 480px) {
-      .modal-close-button {
-        font-size: 10em;
-      }
-    }
 
+  .modal-previous-button {
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 15px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: lighter;
+    transition: 0.3s;
+  }
+
+  .modal-next-button {
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    right: 15px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: lighter;
+    transition: 0.3s;
+  }
+
+  .modal-close-button:hover,
+  .modal-close-button:focus,
+  .modal-previous-button:hover,
+  .modal-previous-button:focus,
+  .modal-next-button:hover,
+  .modal-next-button:focus {
+    color: #b0b0b0;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  @media only screen and (max-device-width: 480px) {
+    .modal-close-button {
+      font-size: 10em;
+    }
+    .modal-previous-button,
+    .modal-next-button {
+      display: none;
+    }
+  }
+ 
 /* #### Navigation Bar ######################################################################## */
 nav{
 	position:fixed;
