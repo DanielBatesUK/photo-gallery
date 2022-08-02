@@ -224,55 +224,51 @@ img.gallery-thumbnails {
     margin: auto;
   }
 
-  .modal-close-button {
+  #modal-close-button,
+  #modal-next-button,
+  #modal-previous-button {
     position: absolute;
     z-index: 3;
-    top: 15px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: lighter;
+    width: 2.0em;
+    height: 2.0em;
     transition: 0.3s;
+    opacity: 0.66;
   }
 
-  .modal-previous-button {
-    position: absolute;
-    z-index: 3;
+  #modal-close-button {
+    top: 0.5em;
+    right: 0.5em;
+  }
+  
+  #modal-next-button {
     top: 50%;
-    left: 15px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: lighter;
-    transition: 0.3s;
+    right: 0.5em;
   }
-
-  .modal-next-button {
-    position: absolute;
-    z-index: 3;
+  
+  #modal-previous-button {
     top: 50%;
-    right: 15px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: lighter;
-    transition: 0.3s;
+    left: 0.5em;
   }
-
-  .modal-close-button:hover,
-  .modal-close-button:focus,
-  .modal-previous-button:hover,
-  .modal-previous-button:focus,
-  .modal-next-button:hover,
-  .modal-next-button:focus {
-    color: #b0b0b0;
-    text-decoration: none;
+  
+  #modal-close-button:hover,
+  #modal-close-button:focus,
+  #modal-next-button:hover,
+  #modal-next-button:focus,
+  #modal-previous-button:hover,
+  #modal-previous-button:focus {
+    transform: scale(1.10);
+    opacity: 1.00;
     cursor: pointer;
   }
   @media only screen and (max-device-width: 480px) {
-    .modal-close-button {
-      font-size: 10em;
+    #modal-close-button {
+      top: 3.0em;
+      right: 3.0em;
+        width: 3.0em;
+      height: 3.0em;
     }
-    .modal-previous-button,
-    .modal-next-button {
+    #modal-next-button,
+    #modal-previous-button {
       display: none;
     }
   }
