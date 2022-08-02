@@ -63,7 +63,6 @@ function routeImages(req, res) {
       // Image request
       console.log(`${timeStamp()} - Image requested for '${req.params.image}'`);
       const photoFilename = removePrefix(req.params.image, currentPrefix);
-      console.log(`${timeStamp()} - Photo filename for image: '${photoFilename}'`);
       // Check photo file exists
       if (fs.existsSync(process.env.PATH_UPLOADS + photoFilename)) {
         // Photo file exists

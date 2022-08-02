@@ -29,7 +29,7 @@ script.
   currentPhotoID = 0;
   function openModal(photo) {
     document.getElementById('gallery-modal').style.display = 'block';
-    document.getElementById('modal-photo').src = 'images/' + prefix_thumbnails + photo.alt;
+    document.getElementById('modal-photo').src = 'images/!{prefix_previews}' + photo.alt;
     currentPhotoID = Number(photo.id);
   }
   function closeModal() {
