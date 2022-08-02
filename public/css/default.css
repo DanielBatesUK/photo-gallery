@@ -232,7 +232,7 @@ img.gallery-thumbnails {
     width: 2.0em;
     height: 2.0em;
     transition: 0.3s;
-    opacity: 0.66;
+    opacity: 0.50;
   }
 
   #modal-close-button {
