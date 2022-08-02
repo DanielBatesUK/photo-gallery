@@ -50,34 +50,52 @@ function generatePreview(req, res, photoFilename) {
       return (res.end(data));
     });
 }
+
+function generateImage(req, res, photoFilename) {
+  console.log(`${timeStamp()} - Generating unaltered image: '${photoFilename}'`);
+  sharp(process.env.PATH_UPLOADS + photoFilename)
+    .rotate()
+    .toFormat('jpeg')
+    .jpeg({ quality: 100 })
+    .toBuffer()
+    .then((data) => {
+    // To display the image
+      res.writeHead(200, {
+        'Content-Type': 'image/jpeg',
+        'Content-Length': data.length,
+      });
+      return (res.end(data));
+    });
+}
+
 // ################################################################################################
 
 // Route - Images
 function routeImages(req, res) {
   try {
     console.log(`${timeStamp()} - Processing HTTP ${req.method} request for '${req.path}' as 'image file'`);
-    let currentPrefix = false;
+    let currentPrefix = '';
     if (req.params.image.startsWith(process.env.PREFIX_THUMBNAILS)) { currentPrefix = process.env.PREFIX_THUMBNAILS; }
     if (req.params.image.startsWith(process.env.PREFIX_PREVIEWS)) { currentPrefix = process.env.PREFIX_PREVIEWS; }
-    if (currentPrefix) {
-      // Image request
-      console.log(`${timeStamp()} - Image requested for '${req.params.image}'`);
-      const photoFilename = removePrefix(req.params.image, currentPrefix);
-      // Check photo file exists
-      if (fs.existsSync(process.env.PATH_UPLOADS + photoFilename)) {
-        // Photo file exists
-        console.log(`${timeStamp()} - Photo file exists for image: '${photoFilename}'`);
-        if (currentPrefix === process.env.PREFIX_THUMBNAILS) {
-          generateThumbnail(req, res, photoFilename);
-        } else {
-          generatePreview(req, res, photoFilename);
-        }
+    // Image request
+    console.log(`${timeStamp()} - Image requested for '${req.params.image}'`);
+    const photoFilename = currentPrefix !== '' ? removePrefix(req.params.image, currentPrefix) : req.params.image;
+    // Check photo file exists
+    if (fs.existsSync(process.env.PATH_UPLOADS + photoFilename)) {
+      // Photo file exists
+      console.log(`${timeStamp()} - Photo file exists for image: '${photoFilename}'`);
+      if (currentPrefix === process.env.PREFIX_THUMBNAILS) {
+        generateThumbnail(req, res, photoFilename);
+      } else if (currentPrefix === process.env.PREFIX_PREVIEWS) {
+        generatePreview(req, res, photoFilename);
       } else {
-        // Photo file does not exist
-        console.log(`${timeStamp()} - Photo file does not exist for '${photoFilename}'`);
-        res.send(`no image exists '${req.params.image}'`);
-        res.end();
+        generateImage(req, res, photoFilename);
       }
+    } else {
+      // Photo file does not exist
+      console.log(`${timeStamp()} - Photo file does not exist for '${photoFilename}'`);
+      res.send(`no image exists '${req.params.image}'`);
+      res.end();
     }
   } catch (error) {
     console.error(error);
