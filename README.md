@@ -1,7 +1,7 @@
-<h1 align="center">Welcome to photo-gallery 👋</h1>
+<h1 align="center">Photo-Gallery</h1>
 <p>
-  <a href="https://www.npmjs.com/package/photo-gallery" target="_blank">
-    <img alt="Version" src="https://img.shields.io/npm/v/photo-gallery.svg">
+  <a href="https://github.com/DanielBatesUK/photo-gallery" target="_blank">
+    <img alt="Last Commit" src="https://img.shields.io/github/last-commit/DanielBatesUK/photo-gallery" />
   </a>
   <a href="https://github.com/DanielBatesUK/photo-gallery#readme" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
@@ -37,7 +37,7 @@ npm run test
 
 👤 **Daniel Bates**
 
-* Website: https://github.com/DanielBatesUK
+* Website: <https://github.com/DanielBatesUK>
 * Twitter: [@DanielBatesUK](https://twitter.com/DanielBatesUK)
 * Github: [@DanielBatesUK](https://github.com/DanielBatesUK)
 * LinkedIn: [@DanielBatesUK](https://linkedin.com/in/DanielBatesUK)
