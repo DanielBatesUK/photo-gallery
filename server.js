@@ -4,6 +4,7 @@
 import dotevn from 'dotenv';
 import express from 'express';
 import cookieParser from 'cookie-parser';
+import fs from 'fs';
 
 // My Imports
 import timeStamp from './lib/time_stamp.mjs';
@@ -28,6 +29,19 @@ dotevn.config();
 
 // Starting
 console.log(`${timeStamp()} - Server Starting`);
+
+// ################################################################################################
+
+// Check upload folder
+if (process.env.PATH_UPLOADS.endsWith('/') === false) process.env.PATH_UPLOADS = `${process.env.PATH_UPLOADS}/`;
+console.log(`${timeStamp()} - Upload folder: '${process.env.PATH_UPLOADS}'`);
+try {
+  if (fs.lstatSync(process.env.PATH_UPLOADS).isDirectory() === false) throw Error;
+} catch (error) {
+  console.error(`${timeStamp()} - Error: Cannot access upload folder: '${process.env.PATH_UPLOADS}'`);
+  console.error(`${timeStamp()} - Exit`);
+  process.exit();
+}
 
 // ################################################################################################
 
