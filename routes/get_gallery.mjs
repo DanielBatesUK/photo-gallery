@@ -18,7 +18,16 @@ function routeGallery(req, res) {
     let paramModalTime = false;
     if (typeof req.query.m !== 'undefined') { paramModalTime = Number(req.query.m); }
     const photoFilenames = fs.readdirSync(process.env.PATH_UPLOADS);
-    res.render(process.env.VIEW_GALLERY, { web_title: process.env.WEB_TITLE, web_signature: process.env.WEB_SIGNATURE, prefix_thumbnails: process.env.PREFIX_THUMBNAILS, prefix_previews: process.env.PREFIX_PREVIEWS, photoFiles: photoFilenames, paramStart, paramModalTime });
+    res.render(process.env.VIEW_GALLERY, {
+      web_title: process.env.WEB_TITLE,
+      web_signature: process.env.WEB_SIGNATURE,
+      prefix_thumbnails: process.env.PREFIX_THUMBNAILS,
+      prefix_previews: process.env.PREFIX_PREVIEWS,
+      photos_per_page: process.env.PHOTOS_PER_PAGE,
+      photoFiles: photoFilenames,
+      paramStart,
+      paramModalTime,
+    });
     res.end();
   } catch (error) {
     console.error(error);
