@@ -49,7 +49,7 @@ script.
     document.getElementById('gallery-modal').style.display = 'block';
     document.getElementById('modal-photo').src = 'images/!{prefix_previews}' + photo.alt;
     document.getElementById('modal-download-link').href = 'images/' + photo.alt;
-    document.getElementById('modal-download-link').download = photo.alt;
+    document.getElementById('modal-download-link').download = `!{web_title}_!{photosCurrentPage}_${photo.id}`.replace(/[^a-z0-9]/gi, '_').toLowerCase() + '.jpg';
     currentPhotoID = Number(photo.id);
   }
   
