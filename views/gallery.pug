@@ -39,7 +39,7 @@ div(id='gallery-modal' class='modal')
   img(id='modal-photo' class='modal-content')
 div(class="pagination")
   p.
-    #[a(href='gallery?s=0') &lt;&lt;] #[a(href=`gallery?s=${photosPrevPage}`) &lt;] !{photosCurrentPage} of !{photosTotalPages} #[a(href=`gallery?s=${photosNextPage}`) &gt;] #[a(href=`gallery?s=${((photosTotalPages-1) * photosPerPage)}`) &gt;&gt;]
+    #[a(href='?s=0') &lt;&lt;] #[a(href=`?s=${photosPrevPage}`) &lt;] !{photosCurrentPage} of !{photosTotalPages} #[a(href=`?s=${photosNextPage}`) &gt;] #[a(href=`?s=${((photosTotalPages-1) * photosPerPage)}`) &gt;&gt;]
 script.
   let currentPhotoID = 0; // Set initial photo id to 0
   
