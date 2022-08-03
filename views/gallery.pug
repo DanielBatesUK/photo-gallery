@@ -5,14 +5,14 @@ div(class='gallery-heading')
   h2 The Gallery
 div(class='page')
   - photosCount = 0
-  - photosTotal = photoFiles.length
-  - photosPerPage = photos_per_page
-  - photosStart = paramStart
+  - photosTotal = Number(photoFiles.length)
+  - photosPerPage = Number(photos_per_page)
+  - photosStart = Number(paramStart)
   - photosTotalPages = Math.ceil(photosTotal / photosPerPage)
   - photosCurrentPage = Math.floor(photosStart / photosPerPage) + 1
-  - photosEnd = photosStart + photosPerPage
-  - photosNextPage = ((photosStart + photosPerPage) < photosTotal ? (photosStart + photosPerPage) : photosStart)
-  - photosPrevPage = ((photosStart - photosPerPage) < 0 ? 0 : (photosStart - photosPerPage))
+  - photosEnd = Number(photosStart + photosPerPage)
+  - photosNextPage = Number(((photosStart + photosPerPage) < photosTotal ? (photosStart + photosPerPage) : photosStart))
+  - photosPrevPage = Number(((photosStart - photosPerPage) < 0 ? 0 : (photosStart - photosPerPage)))
   while photosCount < photosPerPage
     - if (typeof(photoFiles[photosStart + photosCount]) !== 'undefined'){
       img(id=photosCount src=('images/' + prefix_thumbnails + photoFiles[photosStart + photosCount]) alt=photoFiles[photosStart + photosCount] class='gallery-thumbnails' onclick='openModal(this);')
@@ -39,7 +39,7 @@ div(id='gallery-modal' class='modal')
   img(id='modal-photo' class='modal-content')
 div(class="pagination")
   p.
-    #[a(href='gallery?s=0') <<] #[a(href='gallery?s=' + photosPrevPage) <] !{photosCurrentPage} of !{photosTotalPages} #[a(href='gallery?s=' + photosNextPage) >] #[a(href='gallery?s=' + ((photosTotalPages-1) * photosPerPage)) >>]
+    #[a(href='gallery?s=0') &lt;&lt;] #[a(href=`gallery?s=${photosPrevPage}`) &lt;] !{photosCurrentPage} of !{photosTotalPages} #[a(href=`gallery?s=${photosNextPage}`) &gt;] #[a(href=`gallery?s=${((photosTotalPages-1) * photosPerPage)}`) &gt;&gt;]
 script.
   let currentPhotoID = 0; // Set initial photo id to 0
   
