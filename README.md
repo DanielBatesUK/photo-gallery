@@ -114,6 +114,10 @@ or
 npm start
 ```
 
+### **Access**
+
+To access the photo gallery use a web browser and goto the server's ip address and add the port number given with variable `PORT` in the .env file. e.g. `http://192.168.0.100:3000/` or if on the same machine try `http://localhost:3000/`. If you are running a web server (apache, nginx, etc), maybe consider adding a proxy to your site config files.
+
 ## Story
 
 I was getting married.
