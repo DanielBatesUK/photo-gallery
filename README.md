@@ -67,7 +67,7 @@ PHOTOS_PER_PAGE=20
 cp .env.template .env
 ```
 
-***IMPORTANT:*** You will need, at the very least, to edit these variables in your .env file, to fit your requirements. Please do so with your text editor of choice.
+***IMPORTANT:*** Before running, you will need, at the very least, to edit these variables in your .env file, to fit your requirements. Please do so with your text editor of choice.
 
 - **PORT** - The integer port number you want to listen for http requests on. e.g. `3000`
 - **SESSION_SECRET** - The string for the secret text that is used when hashing the passcode. e.g `My-Super-Secret-Password`
@@ -77,7 +77,7 @@ cp .env.template .env
 The other variables can be left as default. Change them if you wish. But here is what they are.
 
 - **WEB_TITLE** - String used for the title and heading on the webpages. e.g. `My Photo Gallery`
-- **WEB_SIGNATURE** - String used for the small footer not at the bottom of all the webpages, accept for the home page. e.g. `Photo Gallery 2022`
+- **WEB_SIGNATURE** - String used for the small footer note at the bottom of all the webpages, accept for the home page. e.g. `Photo Gallery 2022`
 - **ROUTE_INDEX** - String used for the route of the index/home page. e.g. https​://example.com`/`
 - **ROUTE_GALLERY** - String used for the route of the gallery page. e.g. https​://example.com`/gallery`
 - **ROUTE_UPLOAD** - String used for the route of the upload page. e.g. https​://example.com`/upload`
@@ -89,16 +89,17 @@ The other variables can be left as default. Change them if you wish. But here is
 - **PREFIX_PREVIEWS** - String used as the prefix that tells the '/routes/get_image' script to generate a preview from a upload photo (that is used on the gallery modal). Must be different from `PREFIX_THUMBNAILS`. e.g. `prev_`
 - **PHOTOS_PER_PAGE** - Integer used to give the number of photo shown on each page of the gallery. By default, and with the css for the gallery page; this number should be divisible by 4. e.g. `20`
 
+## Story
+
 ## Author
 
-👤 **Daniel Bates**
+### **Daniel Bates**
 
-- Website: <https://github.com/DanielBatesUK>
-- Twitter: [@DanielBatesUK](https://twitter.com/DanielBatesUK)
 - Github: [@DanielBatesUK](https://github.com/DanielBatesUK)
+- Twitter: [@DanielBatesUK](https://twitter.com/DanielBatesUK)
 - LinkedIn: [@DanielBatesUK](https://linkedin.com/in/DanielBatesUK)
 
 ## License
 
-Copyright © 2022 [Daniel Bates](https://github.com/DanielBatesUK).<br />
-This project is [GNU](https://github.com/DanielBatesUK/photo-gallery/blob/67efb74092928f88e5ed685ee61020db399a4635/LICENSE.md) licensed.
+- Copyright © 2022 [Daniel Bates](https://github.com/DanielBatesUK).
+- This project is [GNU v3.0](https://github.com/DanielBatesUK/photo-gallery/blob/67efb74092928f88e5ed685ee61020db399a4635/LICENSE.md) licensed.
