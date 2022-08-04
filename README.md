@@ -27,8 +27,19 @@ git clone https://github.com/DanielBatesUK/photo-gallery
 Then, in the clone's root directory, install required dependencies from npm.
 
 ```Shell
-npm install -d
+npm install
 ```
+
+Required dependencies are:
+
+- cookie-parser
+- dotenv
+- exifr
+- express
+- multer
+- pug
+- sharp
+- uuid
 
 ### **Configure the .env file**
 
@@ -72,7 +83,7 @@ cp .env.template .env
 - **PORT** - The integer port number you want to listen for http requests on. e.g. `3000`
 - **SESSION_SECRET** - The string for the secret text that is used when hashing the passcode. e.g `My-Super-Secret-Password`
 - **PASSCODE** - The string used for the passcode. The passcode is given to the users (by you) that you want to have upload access. It is entered via a form when trying to use the upload page. e.g. `My-Secret-Passcode`
-- **PATH_UPLOADS** - This string is the pathname of the directory where you want the uploaded photos to be stored (it can be anywhere accessible on your system; but I would maybe avoid putting them in the '/public' directory). e.g. `/location/where/to/save/uploaded/`
+- **PATH_UPLOADS** - This string is the pathname of the directory where you want the uploaded photos to be stored. Make a new directory if necessary. The directory can be anywhere accessible on your system. But I would maybe avoid putting them in the '/public' directory of the project. e.g. `/location/where/to/save/uploaded/`
 
 The other variables can be left as default. Change them if you wish. But here is what they are.
 
@@ -89,7 +100,23 @@ The other variables can be left as default. Change them if you wish. But here is
 - **PREFIX_PREVIEWS** - String used as the prefix that tells the '/routes/get_image' script to generate a preview from a upload photo (that is used on the gallery modal). Must be different from `PREFIX_THUMBNAILS`. e.g. `prev_`
 - **PHOTOS_PER_PAGE** - Integer used to give the number of photo shown on each page of the gallery. By default, and with the css for the gallery page; this number should be divisible by 4. e.g. `20`
 
+### **Run**
+
+After you made sure the THen start the app with either:
+
+```Shell
+node server.js
+```
+
+or
+
+```Shell
+npm start
+```
+
 ## Story
+
+I was getting married.
 
 ## Author
 
