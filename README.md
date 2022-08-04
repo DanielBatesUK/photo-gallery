@@ -1,4 +1,4 @@
-# **Photo-Gallery :camera::framed_picture**
+# **Photo-Gallery :camera::framed_picture:**
 
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/DanielBatesUK/photo-gallery) ![GitHub last commit](https://img.shields.io/github/last-commit/DanielBatesUK/photo-gallery)
 
@@ -12,7 +12,7 @@
 
 ## **Description**
 
- A simple photo gallery website. It allows users to view, download and upload photos (with a given passcode).
+ A simple photo gallery website. It allows users to view, download and upload photos (upload access given with a passcode).
 
 ## **Installation**
 
@@ -67,7 +67,7 @@ PHOTOS_PER_PAGE=20
 cp .env.template .env
 ```
 
-***IMPORTANT:*** You will need to, at the very least, update these variables in your .env file, to fit your requirements. Please do so with your text editor of choice.
+***IMPORTANT:*** You will need, at the very least, to edit these variables in your .env file, to fit your requirements. Please do so with your text editor of choice.
 
 - **PORT** - The integer port number you want to listen for http requests on. e.g. `3000`
 - **SESSION_SECRET** - The string for the secret text that is used when hashing the passcode. e.g `My-Super-Secret-Password`
