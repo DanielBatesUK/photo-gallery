@@ -1,59 +1,12 @@
-<h1 align="center">Photo-Gallery</h1>
-<p>
-  <a href="https://github.com/DanielBatesUK/photo-gallery" target="_blank">
-    <img alt="Last Commit" src="https://img.shields.io/github/last-commit/DanielBatesUK/photo-gallery" />
-  </a>
-  <a href="https://github.com/DanielBatesUK/photo-gallery#readme" target="_blank">
-    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
-  </a>
-  <a href="https://github.com/DanielBatesUK/photo-gallery/graphs/commit-activity" target="_blank">
-    <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
-  </a>
-  <a href="https://github.com/DanielBatesUK/photo-gallery/blob/master/LICENSE" target="_blank">
-    <img alt="License: ISC" src="https://img.shields.io/github/license/DanielBatesUK/photo-gallery" />
-  </a>
-  <a href="https://twitter.com/DanielBatesUK" target="_blank">
-    <img alt="Twitter: DanielBatesUK" src="https://img.shields.io/twitter/follow/DanielBatesUK.svg?style=social" />
-  </a>
-</p>
+# Photo-Gallery :camera::framed_picture:
+![GitHub package.json version](https://img.shields.io/github/package-json/v/DanielBatesUK/photo-gallery) ![GitHub last commit](https://img.shields.io/github/last-commit/DanielBatesUK/photo-gallery)
 
-> A simple photo gallery that allows users to view, download and upload photos (with an passcode)
+![GitHub repo file count](https://img.shields.io/github/directory-file-count/DanielBatesUK/photo-gallery) ![GitHub repo size](https://img.shields.io/github/repo-size/DanielBatesUK/photo-gallery) ![GitHub all releases](https://img.shields.io/github/downloads/DanielBatesUK/photo-gallery/total)
 
-### 🏠 [Homepage](https://github.com/DanielBatesUK/photo-gallery#readme)
+![GitHub issues](https://img.shields.io/github/issues-raw/DanielBatesUK/photo-gallery) 
+
+![GitHub forks](https://img.shields.io/github/forks/DanielBatesUK/photo-gallery?style=social)
+ 
+![Twitter Follow](https://img.shields.io/twitter/follow/DanielBatesUK?style=social)
 
 ## Install
-
-```sh
-npm install
-```
-
-## Run tests
-
-```sh
-npm run test
-```
-
-## Author
-
-👤 **Daniel Bates**
-
-* Website: <https://github.com/DanielBatesUK>
-* Twitter: [@DanielBatesUK](https://twitter.com/DanielBatesUK)
-* Github: [@DanielBatesUK](https://github.com/DanielBatesUK)
-* LinkedIn: [@DanielBatesUK](https://linkedin.com/in/DanielBatesUK)
-
-## 🤝 Contributing
-
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/DanielBatesUK/photo-gallery/issues). You can also take a look at the [contributing guide](https://github.com/DanielBatesUK/photo-gallery/blob/master/CONTRIBUTING.md).
-
-## Show your support
-
-Give a ⭐️ if this project helped you!
-
-## 📝 License
-
-Copyright © 2022 [Daniel Bates](https://github.com/DanielBatesUK).<br />
-This project is [ISC](https://github.com/DanielBatesUK/photo-gallery/blob/master/LICENSE) licensed.
-
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
