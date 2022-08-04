@@ -12,7 +12,7 @@
     "url": "git+https://github.com/DanielBatesUK/photo-gallery.git"
   },
   "author": "Daniel Bates",
-  "license": "ISC",
+  "license": "GNU v3.0",
   "bugs": {
     "url": "https://github.com/DanielBatesUK/photo-gallery/issues"
   },
