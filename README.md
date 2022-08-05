@@ -118,13 +118,13 @@ npm start
 
 ### Home, Gallery & Upload pages
 
-To access the photo gallery use a web browser and goto the server's ip address and add the port number given with variable `PORT` in the .env file. e.g. `http://192.168.0.100:3000/` or if on the same machine try `http://localhost:3000/`. If you are running a web server (apache, nginx, etc), maybe consider adding a proxy to your site config files.
+To access the photo gallery use a web browser and goto the server's ip address and add the port number given with variable `PORT` in the .env file. e.g. `http://192.168.0.100:3000/` or if on the same machine try `http://localhost:3000/`. If you are running a web server (apache, nginx, etc), maybe consider adding a proxy to your site config files. You can navigate around the three pages using the links in navigation bar/dropdown.
 
 ### Gallery page
 
-There are pagination links at the bottom of each page of the gallery. With links to First, previous, next and last pages to help you navigate. You can also use a swipe gesture to go to the next and previous pages too.
+There are pagination links at the bottom of each page of the gallery. With links to first, previous, next and last pages to help you navigate. You can also use a left and right swipe gesture to go to the next and previous pages too.
 
-Clicking on an photo will open a modal displaying a full screen version of the selected photo. You can download a full resolution image of the photo via the download button (downward arrow with a line). You can also display the next and previous photos via the left and right arrows on the screen (these are removed if viewing on a phone), by using the left and right arrows on your keyboard, or by using a left or right swiping gestures. The next or previous page of the gallery will be loaded if you navigate beyond the bounds of the current gallery page.
+Clicking on a photo will open a modal displaying a full screen version of that photo. You can download a full resolution image of the photo via the download button (downward arrow with a line). You can also display the next and previous photos via the left and right arrows on the screen (these are removed if viewing on a phone), by using the left and right arrows on your keyboard, or by using a left or right swiping gesture. The next or previous page of the gallery will be loaded automatically if you navigate beyond the bounds of the current gallery page.
 
 ### Upload page (access via passcode)
 
