@@ -10,13 +10,13 @@
 
 ![Twitter Follow](https://img.shields.io/twitter/follow/DanielBatesUK?style=social)
 
-## **Description**
+## Description
 
- A simple photo gallery website. It allows users to view, download and upload photos (upload access given with a passcode).
+ A simple node.js photo gallery website. It allows users to view, download and upload photos (upload access given with a passcode).
 
-## **Installation**
+## Installation
 
-### **Clone the repository**
+### Clone the repository
 
 Clone the photo-gallery repo from GitHub.
 
@@ -30,18 +30,18 @@ Then, in the clone's root directory, install required dependencies from npm.
 npm install
 ```
 
-Required dependencies are:
+THe main required dependencies are:
 
-- cookie-parser
-- dotenv
-- exifr
-- express
-- multer
-- pug
-- sharp
-- uuid
+- cookie-parser - [GitHub](https://github.com/expressjs/cookie-parser) [npm](https://www.npmjs.com/package/cookie-parser)
+- dotenv - [GitHub](https://github.com/motdotla/dotenv) [npm](https://www.npmjs.com/package/dotenv)
+- exifr - [GitHub](https://github.com/MikeKovarik/exifr) [npm](https://www.npmjs.com/package/exifr)
+- express - [GitHub](https://github.com/expressjs/express) [npm](https://www.npmjs.com/package/express)
+- multer - [GitHub](https://github.com/expressjs/multer) [npm](https://www.npmjs.com/package/multer)
+- pug - [GitHub](https://github.com/pugjs/pug/tree/master/packages/pug) [npm](https://www.npmjs.com/package/pug)
+- sharp - [GitHub](https://github.com/lovell/sharp) [npm](https://www.npmjs.com/package/sharp)
+- uuid - [GitHub](https://github.com/uuidjs/uuid) [npm](https://www.npmjs.com/package/uuid)
 
-### **Configure the .env file**
+### Configure the .env file
 
 ***Either:*** Create an new .env file with the following.
 
@@ -100,7 +100,7 @@ The other variables can be left as default. Change them if you wish. But here is
 - **PREFIX_PREVIEWS** - String used as the prefix that tells the '/routes/get_image' script to generate a preview from a upload photo (that is used on the gallery modal). Must be different from `PREFIX_THUMBNAILS`. e.g. `prev_`
 - **PHOTOS_PER_PAGE** - Integer used to give the number of photo shown on each page of the gallery. By default, and with the css for the gallery page; this number should be divisible by 4. e.g. `20`
 
-### **Run**
+### Run
 
 After you made sure the THen start the app with either:
 
@@ -114,13 +114,13 @@ or
 npm start
 ```
 
-### **Access**
+## Access
 
 To access the photo gallery use a web browser and goto the server's ip address and add the port number given with variable `PORT` in the .env file. e.g. `http://192.168.0.100:3000/` or if on the same machine try `http://localhost:3000/`. If you are running a web server (apache, nginx, etc), maybe consider adding a proxy to your site config files.
 
 ## Story
 
-I was getting married.
+I was getting married. We thought it would be good to have a place where our guests could share with us and upload their photos; of our special day. Therefore, I made this. And, thankfully, it worked very for us. I wouldn't dare call myself a 'programmer', I'm just a hobbyist. I have no doubt there are many things I'm doing wrong, or can be done way more efficiently. So I please be kind.
 
 ## Author
 
