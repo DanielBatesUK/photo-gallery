@@ -78,7 +78,7 @@ PHOTOS_PER_PAGE=20
 cp .env.template .env
 ```
 
-***IMPORTANT:*** Before running, you will need, at the very least, to edit these variables in your .env file, to fit your requirements. Please do so with your text editor of choice.
+***IMPORTANT!!!:*** Before running, you will need, at the very least, to edit these variables in your .env file, to fit your requirements. Please do so with your text editor of choice (nano, vim, etc).
 
 - **PORT** - The integer port number you want to listen for http requests on. e.g. `3000`
 - **SESSION_SECRET** - The string for the secret text that is used when hashing the passcode. e.g `My-Super-Secret-Password`
@@ -102,7 +102,7 @@ The other variables can be left as default. Change them if you wish. But here is
 
 ### Run
 
-After you made sure the THen start the app with either:
+After you made sure the .env file is ready you can then start the app with either:
 
 ```Shell
 node server.js
@@ -114,9 +114,21 @@ or
 npm start
 ```
 
-## Access
+## Access the photo gallery
+
+### Home, Gallery & Upload pages
 
 To access the photo gallery use a web browser and goto the server's ip address and add the port number given with variable `PORT` in the .env file. e.g. `http://192.168.0.100:3000/` or if on the same machine try `http://localhost:3000/`. If you are running a web server (apache, nginx, etc), maybe consider adding a proxy to your site config files.
+
+### Gallery page
+
+There are pagination links at the bottom of each page of the gallery. With links to First, previous, next and last pages to help you navigate. You can also use a swipe gesture to go to the next and previous pages too.
+
+Clicking on an photo will open a modal displaying a full screen version of the selected photo. You can download a full resolution image of the photo via the download button (downward arrow with a line). You can also display the next and previous photos via the left and right arrows on the screen (these are removed if viewing on a phone), by using the left and right arrows on your keyboard, or by using a left or right swiping gestures. The next or previous page of the gallery will be loaded if you navigate beyond the bounds of the current gallery page.
+
+### Upload page (access via passcode)
+
+When first using the upload page, you will be greeted with a 'Enter passcode' form. This is where you enter the text contained in the `PASSCODE` variable in your .env file.
 
 ## Story
 
