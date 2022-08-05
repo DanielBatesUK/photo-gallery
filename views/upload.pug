@@ -4,26 +4,26 @@ br
 h2 Upload Photos
 div(class='page')
   if page === 'upload-form'
-    form(action='/upload' method='POST' enctype='multipart/form-data')
+    form(action='' method='POST' enctype='multipart/form-data')
       label(id='select-photos-label') Select Photos
         input(type='file' id='upload-files' accept='image/*' name='photos' multiple onchange='filesChange();')
       input(type='submit' id='upload-photos-button' value='No Photos Selected' disabled)
-    a(href='/gallery') Visit the gallery
+    a(href=route_gallery) Visit the gallery
   else if page === 'upload-successful'
       h3 Thank you!
       br
       p.
         Your photos have been uploaded successfully
-      a(href='/gallery') Visit the gallery
+      a(href=route_gallery) Visit the gallery
       br
-      a(href='/upload') Upload more photos
+      a(href=route_upload) Upload more photos
   else
-    form(action='/upload' method='GET' enctype='multipart/form-data')
+    form(action='' method='GET' enctype='multipart/form-data')
       label(for='p')
         | Enter Passcode
       input(type='text' placeholder='passcode' name='p')
       input(type='submit' value='Login')
-    a(href='/gallery') Visit the gallery
+    a(href=route_gallery) Visit the gallery
 script.
   $('.handle').on('click', function(){$('nav ul').toggleClass('showing');});
   function filesChange() {
