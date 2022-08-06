@@ -49,7 +49,7 @@ Then enter the following variables:
 
 ```Shell
 PORT=3000
-SESSION_SECRET="Your-Super-Secret-Password-Goes-Her
+SESSION_SECRET="Your-Super-Secret-Password-Goes-Here"
 PASSCODE="Your-Not-So-Super-Secret-Passcode-Goes-Here"
 PATH_UPLOADS="/location/where/to/save/uploaded/photos/goes/here/"
 WEB_TITLE="Your-Photo-Gallery-Name-Goes-Here"
