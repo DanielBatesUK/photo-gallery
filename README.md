@@ -130,6 +130,8 @@ Clicking on a photo will open a modal displaying a full screen version of that p
 
 When first using the upload page, you will be greeted with a 'Enter passcode' form. This is where you enter the text contained in the `PASSCODE` variable in your .env file.
 
+You can share a link to the upload page that automatically submits the passcode. You can do this by adding `?p=PASSCODE` (replace PASSCODE with your own passcode) to the URL.
+
 ## Fonts
 
 Here's a credit for the designers of the fonts I used.
