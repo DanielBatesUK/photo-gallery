@@ -130,6 +130,16 @@ Clicking on a photo will open a modal displaying a full screen version of that p
 
 When first using the upload page, you will be greeted with a 'Enter passcode' form. This is where you enter the text contained in the `PASSCODE` variable in your .env file.
 
+## Fonts
+
+Here's a credit for the designers of the fonts I used.
+
+- Cute Egg - Free for personal use only - by [Khurasan](https://www.creativefabrica.com/product/cute-egg-5/ref/53/)
+- Hany Petter - Free for personal use only - by [StringLabs](https://stringlabscreative.com/hany-petter)
+- Louis George Cafe - Free for personal and commercial use - by Chen Yining
+
+- Night DEMO - Free for personal use only - by [Vilogsign](https://www.creativefabrica.com/product/jolly-night-duo/ref/237966)
+
 ## Story
 
 I was getting married. We thought it would be good to have a place where our guests could share with us and upload their photos; of our special day. Therefore, I made this. And, thankfully, it worked very for us. I wouldn't dare call myself a 'programmer', I'm just a hobbyist. I have no doubt there are many things I'm doing wrong, or can be done way more efficiently. So I please be kind.
