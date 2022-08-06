@@ -21,13 +21,13 @@
   --disabled-background-color: #ffcdcd;
   --disabled-foreground-color: #b0b0b0;
 
-  --navbar-font: Sans-Serif;
-  --navmenu-font: Sans-Serif;
-  --heading-font-1: 'Molle';
-  --heading-font-2: Sans-Serif;
-  --page-font: Sans-Serif;
-  --thankyou-font: Sans-Serif;
-  --signature-font: Sans-Serif;
+  --navbar-font: 'Night';
+  --navmenu-font: 'Louis George Cafe';
+  --heading-font-1: 'Cute Egg';
+  --heading-font-2: 'Night';
+  --page-font: 'Louis George Cafe';
+  --thankyou-font: 'Hany Petter';
+  --signature-font: 'Hany Petter';
 }
 
 *, *:before, *:after {
@@ -44,7 +44,7 @@ body {
   font-size: 1em;
   text-align: center;
   background-color: var(--background-color);
-  background-image: linear-gradient(135deg, var(--accent-color-1) 0%, rgba(255,255,255,0) 50%, var(--accent-color-2) 100%);
+  background-image: linear-gradient(135deg, var(--accent-color-1) 0%, rgba(255,255,255,0) 33%, rgba(255,255,255,0) 66%, var(--accent-color-2) 100%);
   background-repeat: no-repeat;
   background-attachment: fixed;
   margin:0;
@@ -78,6 +78,7 @@ h1 {
   display: inline-block;
   margin:0;
   font-size: 5em;
+  font-weight: normal;
   color: var(--dark-color);
   font-family: var(--heading-font-1);
   text-align: center;
@@ -88,6 +89,7 @@ h2 {
   display: inline-block;
   margin:0.25em 0 1em 0;
   font-size: 3em;
+  font-weight: normal;
   color: var(--medium-color);
   font-family: var(--heading-font-2);
   text-align: center;
@@ -97,6 +99,7 @@ h3 {
   display: inline-block;
   margin:0.25em 0 0.25em 0;
   font-size: 10em;
+  font-weight: normal;
   color: var(--light-color);
   font-family: var(--thankyou-font);
   font-weight: normal;
@@ -105,7 +108,6 @@ h3 {
 
 /* #### Page ################################################################################## */
 div.page {
-  /*font-family: 'photo-gallery-sans-serif';*/
   margin: auto;
   padding: 0;
   width: 66%;
@@ -122,7 +124,6 @@ div.page {
   }
 
   div.page a{
-    /*font-family: 'photo-gallery-sans-serif';*/
     display: inline-block;
     font-size: 1.5em;
     margin:1em auto 1em auto;
@@ -148,7 +149,6 @@ div.page {
 /* #### Pagination ############################################################################ */ 
 div.pagination {
   display: block;
-  /*font-family: 'photo-gallery-sans-serif';*/
   font-size: 1.5em;
   line-height: 1.5em;
   margin: 1em auto 1em auto;
@@ -163,7 +163,6 @@ div.pagination {
 } 
 
   div.pagination a{
-    /*font-family: 'photo-gallery-sans-serif';*/
     font-size: 1.5em;
     margin:1em 0.25em;
     background-color: var(--accent-color-1);
@@ -192,7 +191,7 @@ div.signature {
   padding: 1em 0 2em 0;
   width: 66%;
   text-align: center;
-  color: var(--medium-color);
+  color: var(--light-color);
   font-family: var(--signature-font);
   font-size: 3em;
 } 
@@ -206,7 +205,7 @@ div.signature {
 /* #### Gallery Thumbnails ##################################################################### */
 img.gallery-thumbnails {
   box-sizing: border-box;
-  border: 0.01em solid var(--medium-color);
+  border: 0.01em solid var(--light-color);
   border-radius: 1em;
   margin: 1%;
   width:256px;
@@ -306,8 +305,6 @@ img.gallery-thumbnails {
   @media only screen and (max-device-width: 480px) {
     #modal-close-button,
     #modal-download-button {
-      width: 5.0em;
-      height: 5.0em;
     }
     #modal-close-button {
       top: 3.0em;
@@ -369,6 +366,8 @@ nav{
   display: none;
   box-sizing: border-box;
   width: 100%;
+  margin:0;
+  border: 0;
   padding: 0.5em;
   background-color: var(--navigation-background);
   color: var(--navigation-foreground);
@@ -381,14 +380,14 @@ nav{
     text-align: left;
   }
     nav ul{
-      max-height: 0px;
+      max-height: 0;
       font-family: var(--page-font);
       font-size: 3em;
     } 
     nav ul li{
       box-sizing: border-box;
       width: 100%;
-      padding: 16px;
+      padding: 0.5em;
       text-align: left;
       border-bottom: 1px solid var(--medium-color);
     }
@@ -398,28 +397,18 @@ nav{
 	}
   
   .showing{
-		max-height: 28em;
+		max-height: 100vh;
 	}
 }
 
 /* #### Navigation Hamburger (for phones) ##################################################### */
-.hamburger {
-  position: relative;
-  display: inline-block;
-  width: 3.5em;
-  height: 2em;
-  margin: 2em 0.5em;
-  border-top: 0.3em solid var(--navigation-foreground);
-  border-bottom: 0.3em solid var(--navigation-foreground);
+
+#navigation-button {
+  padding: 0.5em;
+  width: 5em;
+  height: 5em;
+  transition: all 0.4s;
 }
-  .hamburger:before {
-    content: "";
-    position: absolute;
-    top: 0.55em;
-    left: 0px;
-    width: 100%;
-    border-top: 0.3em solid var(--navigation-foreground);
-  }
 
 /* #### Forms ################################################################################# */
 input[type=text] {

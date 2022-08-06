@@ -1,71 +1,53 @@
 /* Fonts ####################################################################################### */
 
-/* Script */
+/*Cute Egg*/
 @font-face {
-  font-family: 'photo-gallery-script';
-
-  src:  url('../fonts/photo_gallery_script.eot'); 
-  src:  url('../fonts/photo_gallery_script.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/photo_gallery_script.woff') format('woff'), 
-        url('../fonts/photo_gallery_script.ttf')  format('truetype'),
-        url('../fonts/photo_gallery_script.svg#photo-gallery-script') format('svg');
-
-  font-weight: normal;
+  font-family: 'Cute Egg';
   font-style: normal;
-}
-
-/* Serif */
-@font-face {
-  font-family: 'photo-gallery-serif';
-
-  src:  url('../fonts/photo_gallery_serif.eot'); 
-  src:  url('../fonts/photo_gallery_serif.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/photo_gallery_serif.woff') format('woff'), 
-        url('../fonts/photo_gallery_serif.ttf')  format('truetype'),
-        url('../fonts/photo_gallery_serif.svg#photo-gallery-serif') format('svg');
-
   font-weight: normal;
-  font-style: normal;
-}
-
-/* Sans-Serif */
-@font-face {
-  font-family: 'photo-gallery-sans-serif';
-
-  src:  url('../fonts/photo_gallery_sansserif.eot'); 
-  src:  url('../fonts/photo_gallery_sansserif?#iefix') format('embedded-opentype'),
-        url('../fonts/photo_gallery_sansserif.woff') format('woff'), 
-        url('../fonts/photo_gallery_sansserif.ttf')  format('truetype'),
-        url('../fonts/photo_gallery_sansserif.svg#photo-gallery-sans-serif') format('svg');
-
-  font-weight: normal;
-  font-style: normal;
-}
-
-/* Handwriting */
-@font-face {
-  font-family: 'photo-gallery-handwriting';
-
-  src:  url('../fonts/photo_gallery_handwriting.eot'); 
-  src:  url('../fonts/photo_gallery_handwriting.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/photo_gallery_handwriting.woff') format('woff'), 
-        url('../fonts/photo_gallery_handwriting.ttf')  format('truetype'),
-        url('../fonts/photo_gallery_handwriting.svg#photo-gallery-handwriting') format('svg');
-
-  font-weight: normal;
-  font-style: normal;
-}
-
-/* molle-italic - latin */
-@font-face {
-  font-family: 'Molle';
-  font-style: italic;
-  font-weight: 400;
-  src: url('../fonts/molle-v21-latin-italic.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/Cute Egg.eot'); /* IE9 Compat Modes */
   src: local(''),
-       url('../fonts/molle-v21-latin-italic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('../fonts/molle-v21-latin-italic.woff2') format('woff2'), /* Super Modern Browsers */
-       url('../fonts/molle-v21-latin-italic.woff') format('woff'), /* Modern Browsers */
-       url('../fonts/molle-v21-latin-italic.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('../fonts/molle-v21-latin-italic.svg#Molle') format('svg'); /* Legacy iOS */
+       url('../fonts/Cute Egg.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/Cute Egg.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/Cute Egg.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/Cute Egg.svg#Cute Egg') format('svg'); /* Legacy iOS */
+}
+
+/* Night DEMO */
+@font-face {
+  font-family: 'Night';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/Night DEMO.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('../fonts/Night DEMO.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/Night DEMO.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/Night DEMO.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/Night DEMO.svg#Night') format('svg'); /* Legacy iOS */
+}
+
+/*Louis George Cafe*/
+@font-face {
+  font-family: 'Louis George Cafe';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/Louis George Cafe.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('../fonts/Louis George Cafe.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/Louis George Cafe.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/Louis George Cafe.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/Louis George Cafe.svg#Louis George Cafe') format('svg'); /* Legacy iOS */
+}
+
+/*Hany Petter*/
+@font-face {
+  font-family: 'Hany Petter';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/Hany Petter.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('../fonts/Hany Petter.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/Hany Petter.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/Hany Petter.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/Hany Petter.svg#Hany Petter') format('svg'); /* Legacy iOS */
 }

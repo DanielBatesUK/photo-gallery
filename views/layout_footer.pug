@@ -1,2 +1,9 @@
 script.
-  $('.handle').on('click', function(){$('nav ul').toggleClass('showing');});
+  document.getElementById('navigation-button').onclick = function() {
+    document.getElementById('navigation-ul').classList.toggle('showing');
+    if(document.getElementById('navigation-ul').classList.value === 'showing') {
+      document.getElementById('navigation-button').setAttribute("transform", "rotate(-180)")
+    } else {
+      document.getElementById('navigation-button').setAttribute("transform", "rotate(0)")
+    }
+  };  
