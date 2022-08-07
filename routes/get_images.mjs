@@ -17,6 +17,7 @@ function removePrefix(name, prefix) {
 
 function generateThumbnail(req, res, photoFilename) {
   console.log(`${timeStamp()} - Generating thumbnail: '${photoFilename}'`);
+  sharp.cache(false);
   sharp(process.env.PATH_UPLOADS + photoFilename)
     .rotate()
     .resize(256, 192)
@@ -35,6 +36,7 @@ function generateThumbnail(req, res, photoFilename) {
 
 function generatePreview(req, res, photoFilename) {
   console.log(`${timeStamp()} - Generating preview: '${photoFilename}'`);
+  sharp.cache(false);
   sharp(process.env.PATH_UPLOADS + photoFilename)
     .rotate()
     .resize(1080, 1080, { fit: 'inside' })
@@ -53,6 +55,7 @@ function generatePreview(req, res, photoFilename) {
 
 function generateImage(req, res, photoFilename) {
   console.log(`${timeStamp()} - Generating unaltered image: '${photoFilename}'`);
+  sharp.cache(false);
   sharp(process.env.PATH_UPLOADS + photoFilename)
     .rotate()
     .toFormat('jpeg')
