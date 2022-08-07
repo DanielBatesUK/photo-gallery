@@ -128,6 +128,11 @@ When first using the upload page, you will be greeted with a 'Enter passcode' fo
 
 You can share a link to the upload page that automatically submits the passcode. You can do this by adding `?p=PASSCODE` (replace PASSCODE with your own passcode) to the URL.
 
+## Demo
+
+You can look at a demo here:
+> [https://www.danielbates.co.uk/photo-gallery]
+
 ## Fonts
 
 Here's a credit for the designers of the fonts I used.
