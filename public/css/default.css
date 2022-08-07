@@ -196,6 +196,15 @@ div.signature {
   font-family: var(--signature-font);
   font-size: 3em;
 } 
+div.signature a {
+  color: inherit;
+  text-decoration: none;
+}
+div.signature a:hover {
+  color: inherit;
+  text-decoration: underline;
+}
+
   @media only screen and (max-device-width: 480px) {
     div.signature {
       padding: 0.25em 0 0.5em 0;
@@ -306,6 +315,8 @@ img.gallery-thumbnails {
   @media only screen and (max-device-width: 480px) {
     #modal-close-button,
     #modal-download-button {
+      width: 5.0em;
+      height: 5.0em;
     }
     #modal-close-button {
       top: 3.0em;
