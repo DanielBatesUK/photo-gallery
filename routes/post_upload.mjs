@@ -35,7 +35,7 @@ function routePostUpload(req, res) {
     res.end();
   } catch (error) {
     console.log(error);
-    res.send(`${timeStamp()} - Post upload error`);
+    res.status(500).send(`${timeStamp()} - Post upload error`);
     res.end();
   }
 }

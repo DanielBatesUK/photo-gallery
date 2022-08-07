@@ -35,7 +35,7 @@ function routeGallery(req, res) {
     res.end();
   } catch (error) {
     console.error(error);
-    res.send(`${timeStamp()} - Gallery error`);
+    res.status(500).send(`${timeStamp()} - Gallery error`);
     res.end();
   }
 }

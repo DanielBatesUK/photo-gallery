@@ -19,7 +19,7 @@ function routeIndex(req, res) {
     res.end();
   } catch (error) {
     console.error(error);
-    res.send(`${timeStamp()} - Index error`);
+    res.status(500).send(`${timeStamp()} - Index error`);
     res.end();
   }
 }

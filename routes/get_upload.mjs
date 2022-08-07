@@ -21,7 +21,7 @@ function routeGetUpload(req, res) {
     res.end();
   } catch (error) {
     console.error(error);
-    res.send(`${timeStamp()} - Get upload error`);
+    res.status(500).send(`${timeStamp()} - Get upload error`);
     res.end();
   }
 }
