@@ -10,11 +10,11 @@ html(lang='en')
 	body
 		nav
 			ul(id='navigation-ul')
-				a(href=route_index)
+				a(href=`.${route_index}`)
 					li Home
-				a(href=route_gallery)
+				a(href=`.${route_gallery}`)
 					li The Gallery
-				a(href=route_upload)
+				a(href=`.${route_upload}`)
 					li Upload Photos
 			div(class='handle')
 				svg(id='navigation-button' viewBox='0 0 300 300' version='1.1' xmlns='http://www.w3.org/2000/svg')

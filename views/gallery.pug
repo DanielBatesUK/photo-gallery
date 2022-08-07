@@ -15,7 +15,7 @@ div(class='page')
   - photosPrevPage = Number(((photosStart - photosPerPage) < 0 ? 0 : (photosStart - photosPerPage)))
   while photosCount < photosPerPage
     - if (typeof(photoFiles[photosStart + photosCount]) !== 'undefined'){
-      img(id=photosCount src=`${route_images}/${prefix_thumbnails}${photoFiles[photosStart + photosCount]}` alt=photoFiles[photosStart + photosCount] class='gallery-thumbnails' onclick='openModal(this);')
+      img(id=photosCount src=`.${route_images}/${prefix_thumbnails}${photoFiles[photosStart + photosCount]}` alt=photoFiles[photosStart + photosCount] class='gallery-thumbnails' onclick='openModal(this);')
     -}
     - photosCount++        
 div(id='gallery-modal' class='modal')
@@ -47,8 +47,8 @@ script.
   function openModal(photo) {
     document.body.style.overflow = 'hidden';
     document.getElementById('gallery-modal').style.display = 'block';
-    document.getElementById('modal-photo').src = '!{route_images}/!{prefix_previews}' + photo.alt;
-    document.getElementById('modal-download-link').href = '!{route_images}/' + photo.alt;
+    document.getElementById('modal-photo').src = '.!{route_images}/!{prefix_previews}' + photo.alt;
+    document.getElementById('modal-download-link').href = '.!{route_images}/' + photo.alt;
     document.getElementById('modal-download-link').download = (`!{web_title}_` + '!{photosCurrentPage}'.padStart('!{photosTotalPages}'.length, '0') + '_' + `${Number(photo.id)+ 1}`.padStart('!{photosPerPage}'.length, '0')).replace(/[^a-z0-9]/gi, '_').toLowerCase() + '.jpg';
     currentPhotoID = Number(photo.id);
   }
