@@ -131,7 +131,7 @@ You can share a link to the upload page that automatically submits the passcode.
 ## Demo
 
 You can look at a demo here:
-> [https://www.danielbates.co.uk/photo-gallery]
+> (<https://www.danielbates.co.uk/photo-gallery)[https://www.danielbates.co.uk/photo-gallery>]
 
 ## Fonts
 
