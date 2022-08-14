@@ -25,7 +25,6 @@ div(class='page')
       input(type='submit' value='Login')
     a(href=`.${route_gallery}`) Visit the gallery
 script.
-  $('.handle').on('click', function(){$('nav ul').toggleClass('showing');});
   function filesChange() {
     if(document.getElementById('upload-files').files.length>0) {
       document.getElementById('upload-photos-button').disabled = false;
