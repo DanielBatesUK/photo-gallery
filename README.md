@@ -8,7 +8,7 @@
 
 ## Description
 
- A simple node.js photo gallery website. It allows users to view, download and upload photos (upload access given with a passcode).
+A simple node.js photo gallery website. It allows users to view, download and upload photos (upload access given with a passcode).
 
 ## Installation
 
@@ -39,7 +39,7 @@ THe main required dependencies are:
 
 ### Configure the .env file
 
-***Either:*** Create an new .env file with the following.
+**_Either:_** Create an new .env file with the following.
 
 ```Shell
 cat > .env
@@ -66,15 +66,15 @@ PREFIX_PREVIEWS="prev_"
 PHOTOS_PER_PAGE=20
 ```
 
- With the above press <kbd>Ctrl</kbd> + <kbd>D</kbd> to save.
+With the above press <kbd>Ctrl</kbd> + <kbd>D</kbd> to save.
 
-***Or:*** Copy the .env.template provided to create your .env file.
+**_Or:_** Copy the .env.template provided to create your .env file.
 
 ```Shell
 cp .env.template .env
 ```
 
-***IMPORTANT!!!:*** Before running, you will need, at the very least, to edit these variables in your .env file, to fit your requirements. Please do so with your text editor of choice (nano, vim, etc).
+**_IMPORTANT!!!:_** Before running, you will need, at the very least, to edit these variables in your .env file, to fit your requirements. Please do so with your text editor of choice (nano, vim, etc).
 
 - **PORT** - The integer port number you want to listen for http requests on. e.g. `3000`
 - **SESSION_SECRET** - The string for the secret text that is used when hashing the passcode. e.g `My-Super-Secret-Password`
@@ -92,8 +92,8 @@ The other variables can be left as default. Change them if you wish. But here is
 - **VIEW_INDEX** - String used for the filename of the jade/pug file (in '/views') that used for the index/home page. e.g. `index`
 - **VIEW_GALLERY** - String used for the filename of the jade/pug file (in '/views') that used for the gallery page. e.g. `gallery`
 - **VIEW_UPLOAD** - String used for the filename of the jade/pug file (in '/views') that used for the upload page. e.g. `upload`
-- **PREFIX_THUMBNAILS** - String used as the prefix that tells the '/routes/get_image' script to generate a thumbnail from a upload photo (that is used on the gallery page). Must be different from `PREFIX_PREVIEWS`. e.g. `thumb_`
-- **PREFIX_PREVIEWS** - String used as the prefix that tells the '/routes/get_image' script to generate a preview from a upload photo (that is used on the gallery modal). Must be different from `PREFIX_THUMBNAILS`. e.g. `prev_`
+- **PREFIX_THUMBNAILS** - String used as the prefix that tells the '/routes/get*image' script to generate a thumbnail from a upload photo (that is used on the gallery page). Must be different from `PREFIX_PREVIEWS`. e.g. `thumb*`
+- **PREFIX_PREVIEWS** - String used as the prefix that tells the '/routes/get*image' script to generate a preview from a upload photo (that is used on the gallery modal). Must be different from `PREFIX_THUMBNAILS`. e.g. `prev*`
 - **PHOTOS_PER_PAGE** - Integer used to give the number of photo shown on each page of the gallery. By default, and with the css for the gallery page; this number should be divisible by 4. e.g. `20`
 
 ### Run
