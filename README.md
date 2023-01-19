@@ -144,7 +144,7 @@ Here's a credit for the designers of the fonts I used.
 
 ## Story
 
-I was getting married. We thought it would be good to have a place where our guests could share with us and upload their photos; of our special day. Therefore, I made this. And, thankfully, it worked very for us. I wouldn't dare call myself a 'programmer', I'm just a hobbyist. I have no doubt there are many things I'm doing wrong, or can be done way more efficiently. So I please be kind.
+I was getting married. We thought it would be good idea to have a place where our guests could upload, and share with us their photos; of our special day. Therefore, I made this. And, thankfully, it worked very well for us. I wouldn't dare call myself a 'programmer', I'm just a hobbyist. I have no doubt there are many things I'm doing wrong, or can be done way more efficiently. So I please be kind.
 
 ## Author
 
