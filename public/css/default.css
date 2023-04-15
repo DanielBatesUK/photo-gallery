@@ -119,6 +119,7 @@ section {
 
 /* #### Index logo (by id) #################################################################### */
 #index-logo {
+  content:url('../images/logo.svg');
   color: var(--medium-color);
   position: fixed;
   top: 0;

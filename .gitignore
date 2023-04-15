@@ -4,6 +4,7 @@
 pm2-process.json
 .eslintrc.json
 my-css/
+my-images/
 
 # Default node .gitignore #########################################################################
 

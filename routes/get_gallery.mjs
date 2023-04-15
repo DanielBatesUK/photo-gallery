@@ -21,6 +21,8 @@ function routeGallery(req, res) {
     res.render(process.env.VIEW_GALLERY, {
       web_title: process.env.WEB_TITLE,
       web_css: process.env.WEB_CSS,
+      web_icon_type: process.env.WEB_ICON_TYPE,
+      web_icon_href: process.env.WEB_ICON_HREF,
       web_signature: process.env.WEB_SIGNATURE,
       route_gallery: process.env.ROUTE_GALLERY,
       route_images: process.env.ROUTE_IMAGES,
