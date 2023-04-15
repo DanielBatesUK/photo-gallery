@@ -55,6 +55,8 @@ PATH_UPLOADS="/location/where/to/save/uploaded/photos/goes/here/"
 WEB_TITLE="Your-Photo-Gallery-Name-Goes-Here"
 WEB_TITLE="Your-Photo-Gallery-Name-Goes-Here"
 WEB_CSS="css/default.css"
+WEB_ICON_TYPE="image/svg+xml"
+WEB_ICON_HREF="images/logo.svg"
 ROUTE_INDEX="/"
 ROUTE_GALLERY="/gallery"
 ROUTE_UPLOAD="/upload"
@@ -86,6 +88,7 @@ The other variables can be left as default. Change them if you wish. But here is
 
 - **WEB_TITLE** - String used for the title and heading on the webpages. e.g. `My Photo Gallery`
 - **WEB_CSS** - String for the path to the css file. So you can run multiple instances with different styles.
+- **WEB_ICON_TYPE & WEB_ICON_HREF** - Strings used for page favicon type and path.
 - **WEB_SIGNATURE** - String used for the small footer note at the bottom of all the webpages, accept for the home page. e.g. `Photo Gallery 2022`
 - **ROUTE_INDEX** - String used for the route of the index/home page. e.g. https​://example.com`/`
 - **ROUTE_GALLERY** - String used for the route of the gallery page. e.g. https​://example.com`/gallery`
