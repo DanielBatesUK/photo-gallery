@@ -3,6 +3,7 @@
 .vscode/
 pm2-process.json
 .eslintrc.json
+my-css/
 
 # Default node .gitignore #########################################################################
 

@@ -20,6 +20,7 @@ function routeGallery(req, res) {
     const photoFilenames = fs.readdirSync(process.env.PATH_UPLOADS);
     res.render(process.env.VIEW_GALLERY, {
       web_title: process.env.WEB_TITLE,
+      web_css: process.env.WEB_CSS,
       web_signature: process.env.WEB_SIGNATURE,
       route_gallery: process.env.ROUTE_GALLERY,
       route_images: process.env.ROUTE_IMAGES,

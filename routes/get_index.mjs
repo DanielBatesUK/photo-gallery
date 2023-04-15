@@ -11,6 +11,7 @@ function routeIndex(req, res) {
     console.log(`${timeStamp()} - Processing HTTP ${req.method} request for '${req.path}' as 'index'`);
     res.render(process.env.VIEW_INDEX, {
       web_title: process.env.WEB_TITLE,
+      web_css: process.env.WEB_CSS,
       route_gallery: process.env.ROUTE_GALLERY,
       route_images: process.env.ROUTE_IMAGES,
       route_index: process.env.ROUTE_INDEX,
