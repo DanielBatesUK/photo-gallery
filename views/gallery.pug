@@ -78,16 +78,20 @@ script.
   // Swiping gesture events
   document.addEventListener('touchstart', function (event) {
     touchStartX = event.changedTouches[0].screenX;
+    touchStartY = event.changedTouches[0].screenY;
+    touchStartTouches = event.touches.length;
   }, false);
   document.addEventListener('touchend', function (event) {
     touchEndX = event.changedTouches[0].screenX;
-    swipeGesture();
+    touchEndY = event.changedTouches[0].screenY;
+    touchEndTouches = event.touches.length;
+    if(touchEndTouches === 0) swipeGesture();
   }, false);
   
   // Handle swipe gesture (page and modal)
   function swipeGesture() {
-      if (touchEndX < (touchStartX - 75)) (document.getElementById('gallery-modal').style.display === 'block' ? changeModal(1) : changePage(1, false));
-      if (touchEndX > (touchStartX + 75)) (document.getElementById('gallery-modal').style.display === 'block' ? changeModal(-1) : changePage(-1, false));     
+      if (touchEndX < (touchStartX - (0.075 * window.innerWidth)) && Math.abs(touchStartY - touchEndY) < (0.055 * window.innerHeight)) (document.getElementById('gallery-modal').style.display === 'block' ? changeModal(1) : changePage(1, false));
+      if (touchEndX > (touchStartX + (0.075 * window.innerWidth)) && Math.abs(touchStartY - touchEndY) < (0.055 * window.innerHeight)) (document.getElementById('gallery-modal').style.display === 'block' ? changeModal(-1) : changePage(-1, false));     
   }
 
   // Arrow keys on modal
