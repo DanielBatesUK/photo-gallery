@@ -75,6 +75,11 @@ script.
     }
   }
 
+  // Swipe gesture events
+  function swipeGesture() {
+      if (touchEndX < (touchStartX - (0.075 * window.innerWidth)) && Math.abs(touchStartY - touchEndY) < (0.06 * window.innerHeight)) (document.getElementById('gallery-modal').style.display === 'block' ? changeModal(1) : changePage(1, false));
+      if (touchEndX > (touchStartX + (0.075 * window.innerWidth)) && Math.abs(touchStartY - touchEndY) < (0.06 * window.innerHeight)) (document.getElementById('gallery-modal').style.display === 'block' ? changeModal(-1) : changePage(-1, false));     
+  }
   // Swipe gesture listeners
   document.addEventListener('touchstart', function (event) {
     touchStartX = event.changedTouches[0].screenX;
@@ -87,14 +92,8 @@ script.
     touchEndTouches = event.touches.length;
     if(touchEndTouches === 0) swipeGesture();
   }, false);
-  
-  // Handle swipe gesture events
-  function swipeGesture() {
-      if (touchEndX < (touchStartX - (0.075 * window.innerWidth)) && Math.abs(touchStartY - touchEndY) < (0.06 * window.innerHeight)) (document.getElementById('gallery-modal').style.display === 'block' ? changeModal(1) : changePage(1, false));
-      if (touchEndX > (touchStartX + (0.075 * window.innerWidth)) && Math.abs(touchStartY - touchEndY) < (0.06 * window.innerHeight)) (document.getElementById('gallery-modal').style.display === 'block' ? changeModal(-1) : changePage(-1, false));     
-  }
 
-  // Keyboard controls
+  // Keyboard events
   function keyboardControls(event) {
     if(document.getElementById('gallery-modal').style.display === 'block') {
       if(event.key === 'ArrowRight') changeModal(1);
@@ -102,6 +101,7 @@ script.
       if(event.key === 'Escape') closeModal();
     }
   }
+  // Keyboard listener
   document.onkeydown = keyboardControls;
 
   // Modal open from previous page
