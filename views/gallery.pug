@@ -93,7 +93,14 @@ script.
     document.getElementById('gallery-modal').style.display = 'none';
     document.body.style.overflow = 'auto';
   }
-  
+
+  // Click on modal
+  document.getElementById('gallery-modal').addEventListener('click', function (event) {
+    if (event.target.id === 'gallery-modal' || event.target.id === 'modal-photo') {
+      closeModal();      
+    }
+  }, false)
+
   // Change modal photo via next/previous
   function changeModal(direction) {
     if( (currentPhotoID + direction) >= 0 && (currentPhotoID + direction) < !{photosPerPage}) {
