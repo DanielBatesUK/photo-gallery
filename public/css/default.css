@@ -244,6 +244,28 @@ div.pagination {
       }
     }
 
+  div.pagination a.pagination-current {
+    line-height: 3em;
+    font-size: 1em;
+    text-decoration:underline;
+    background-color: #f0f0f0;
+    opacity: 1;
+    padding: 0.5em;
+  }
+
+  div.pagination a.pagination-link {
+    line-height: 3em;
+    font-size: 1em;
+    background-color: #f0f0f0;
+    text-decoration:none;
+    opacity: 0.5;
+    padding: 0.5em;
+  }
+    div.pagination a.pagination-link:hover{
+    opacity: 1;
+    }
+        
+
 /* #### Website Signature ##################################################################### */  
 div.signature {
   margin: auto;

@@ -13,6 +13,14 @@ div(class='page')
   - photosEnd = Number(photosStart + photosPerPage)
   - photosNextPage = Number(((photosStart + photosPerPage) < photosTotal ? (photosStart + photosPerPage) : photosStart))
   - photosPrevPage = Number(((photosStart - photosPerPage) < 0 ? 0 : (photosStart - photosPerPage)))
+  - photosPagination = photos_pagination
+  - photosPaginationBuffer = Number(photos_pagination_buffer)
+  - photosPaginationTotalPages = (photosPaginationBuffer * 2) + 1
+  - photosPaginationStart = Number(((photosCurrentPage - photosPaginationBuffer) < 1 ? 1 : (photosCurrentPage - photosPaginationBuffer)))
+  - photosPaginationEnd = Number(((photosCurrentPage + photosPaginationBuffer) > photosTotalPages ? photosTotalPages : (photosCurrentPage + photosPaginationBuffer)))
+  - if (((photosPaginationEnd - photosPaginationStart) < photosPaginationTotalPages) && photosCurrentPage < (photosPaginationBuffer+1)) {photosPaginationEnd = ((photosPaginationTotalPages) > photosTotalPages ? photosTotalPages : photosPaginationTotalPages)}
+  - if (((photosPaginationEnd - photosPaginationStart) < photosPaginationTotalPages) && photosCurrentPage > (photosTotalPages - (photosPaginationBuffer+1))) {photosPaginationStart = ((photosPaginationTotalPages) > photosTotalPages ? 1 : ((photosTotalPages+1) - photosPaginationTotalPages))}
+  - photosPaginationCount = photosPaginationStart
   while photosCount < photosPerPage
     - if (typeof(photoFiles[photosStart + photosCount]) !== 'undefined'){
       img(id=photosCount src=`.${route_images}/${prefix_thumbnails}${photoFiles[photosStart + photosCount]}` alt=photoFiles[photosStart + photosCount] class='gallery-thumbnails' onclick='openModal(this);')
@@ -40,6 +48,33 @@ div(id='gallery-modal' class='modal')
 div(class="pagination")
   p.
     #[a(href='?s=0') &lt;&lt;] #[a(href=`?s=${photosPrevPage}`) &lt;] !{photosCurrentPage} of !{photosTotalPages} #[a(href=`?s=${photosNextPage}`) &gt;] #[a(href=`?s=${((photosTotalPages-1) * photosPerPage)}`) &gt;&gt;]
+  - if (!!photosPagination && photosTotalPages > 1){
+    - if (photosPaginationStart !== 1){
+      | #[a(href='?s=0' class='pagination-link' ) 1]
+    -}
+    - if (photosCurrentPage !== 1){
+      | #[a(href=`?s=${photosPrevPage}` class='pagination-link' ) &lt;]
+    -}
+    - if (photosPaginationStart !== 1){
+      | ...
+    -}
+    while photosPaginationCount < photosPaginationEnd+1
+      - if (photosPaginationCount === photosCurrentPage) {
+        | #[a(href=`?s=${(photosPaginationCount-1) * photosPerPage}` class='pagination-current') !{photosPaginationCount}]
+      - } else {
+        | #[a(href=`?s=${(photosPaginationCount-1) * photosPerPage}` class='pagination-link' ) !{photosPaginationCount}]
+      - }
+      - photosPaginationCount++
+    - if (photosPaginationEnd !== photosTotalPages){
+      | ...
+    -}
+    - if (photosCurrentPage !== photosTotalPages){
+      | #[a(href=`?s=${photosNextPage}` class='pagination-link' ) &gt;]
+    -}
+    - if (photosPaginationEnd !== photosTotalPages){
+      | #[a(href=`?s=${((photosTotalPages-1) * photosPerPage)}` class='pagination-link' ) !{photosTotalPages}]
+    -}
+  -}
 script.
   let currentPhotoID = 0; // Set initial photo id to 0
   

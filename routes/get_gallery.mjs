@@ -31,6 +31,8 @@ function routeGallery(req, res) {
       prefix_thumbnails: process.env.PREFIX_THUMBNAILS,
       prefix_previews: process.env.PREFIX_PREVIEWS,
       photos_per_page: process.env.PHOTOS_PER_PAGE,
+      photos_pagination: process.env.PHOTOS_PAGINATION,
+      photos_pagination_buffer: process.env.PHOTOS_PAGINATION_BUFFER,
       photoFiles: photoFilenames,
       paramStart,
       paramModalTime,
