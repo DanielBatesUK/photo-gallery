@@ -15,14 +15,23 @@ function removePrefix(name, prefix) {
   return nameSplit.join();
 }
 
-function generateThumbnail(req, res, photoFilename) {
-  console.log(`${timeStamp()} - Generating thumbnail: '${photoFilename}'`);
-  sharp.cache(false);
-  sharp(process.env.PATH_UPLOADS + photoFilename)
+function getPhotoFormat(photoFilename) {
+  return (photoFilename.split('.').pop() === 'jpg' ? 'jpeg' : photoFilename.split('.').pop())
+}
+
+
+// ################################################################################################
+
+async function generateJpegThumbnail(req, res, photoFilename) {
+  console.log(`${timeStamp()} - Generating 'JPEG' thumbnail: '${photoFilename}'`);
+  await sharp.cache({files: 0});
+  await sharp.cache(false);
+  await sharp(process.env.PATH_UPLOADS + photoFilename)
     .rotate()
     .resize(256, 192)
     .toFormat('jpeg')
     .jpeg({ quality: 30 })
+    .gif({pageHeight: 192})
     .toBuffer()
     .then((data) => {
     // To display the image
@@ -34,10 +43,33 @@ function generateThumbnail(req, res, photoFilename) {
     });
 }
 
-function generatePreview(req, res, photoFilename) {
-  console.log(`${timeStamp()} - Generating preview: '${photoFilename}'`);
-  sharp.cache(false);
-  sharp(process.env.PATH_UPLOADS + photoFilename)
+async function generateGifThumbnail(req, res, photoFilename) {
+  console.log(`${timeStamp()} - Generating 'GIF' thumbnail: '${photoFilename}'`);
+  await sharp.cache({files: 0});
+  await sharp.cache(false);
+  await sharp(process.env.PATH_UPLOADS + photoFilename, { animated: true })
+    .rotate()
+    .resize(256, 192)
+    .toFormat('gif')
+    .gif({pageHeight: 192})
+    .toBuffer()
+    .then((data) => {
+    // To display the image
+      res.writeHead(200, {
+        'Content-Type': 'image/gif',
+        'Content-Length': data.length,
+      });
+      return (res.end(data));
+    });
+}
+
+// ################################################################################################
+
+async function generateJpegPreview(req, res, photoFilename) {
+  console.log(`${timeStamp()} - Generating 'JPEG' preview: '${photoFilename}'`);
+  await sharp.cache({files: 0});
+  await sharp.cache(false);
+  await sharp(process.env.PATH_UPLOADS + photoFilename)
     .rotate()
     .resize(1080, 1080, { fit: 'inside' })
     .toFormat('jpeg')
@@ -53,10 +85,33 @@ function generatePreview(req, res, photoFilename) {
     });
 }
 
-function generateImage(req, res, photoFilename) {
-  console.log(`${timeStamp()} - Generating unaltered image: '${photoFilename}'`);
-  sharp.cache(false);
-  sharp(process.env.PATH_UPLOADS + photoFilename)
+async function generateGifPreview(req, res, photoFilename) {
+  console.log(`${timeStamp()} - Generating 'GIF' preview: '${photoFilename}'`);
+  await sharp.cache({files: 0});
+  await sharp.cache(false);
+  await sharp(process.env.PATH_UPLOADS + photoFilename, { animated: true })
+    .rotate()
+    .resize(1080, 1080, { fit: 'inside' })
+    .toFormat('gif')
+    .gif({pageHeight: 1080})
+    .toBuffer()
+    .then((data) => {
+    // To display the image
+      res.writeHead(200, {
+        'Content-Type': 'image/gif',
+        'Content-Length': data.length,
+      });
+      return (res.end(data));
+    });
+}
+
+// ################################################################################################
+
+async function generateJpegImage(req, res, photoFilename) {
+  console.log(`${timeStamp()} - Generating unaltered 'JPEG' image: '${photoFilename}'`);
+  await sharp.cache({files: 0});
+  await sharp.cache(false);
+  await sharp(process.env.PATH_UPLOADS + photoFilename)
     .rotate()
     .toFormat('jpeg')
     .jpeg({ quality: 100 })
@@ -64,7 +119,25 @@ function generateImage(req, res, photoFilename) {
     .then((data) => {
     // To display the image
       res.writeHead(200, {
-        'Content-Type': 'image/jpeg',
+        'Content-Type': `image/jpeg`,
+        'Content-Length': data.length,
+      });
+      return (res.end(data));
+    });
+}
+
+async function generateGifImage(req, res, photoFilename) {
+  console.log(`${timeStamp()} - Generating unaltered 'GIF' image: '${photoFilename}'`);
+  await sharp.cache({files: 0});
+  await sharp.cache(false);
+  await sharp(process.env.PATH_UPLOADS + photoFilename, { animated: true })
+    .rotate()
+    .toFormat('gif')
+    .toBuffer()
+    .then((data) => {
+    // To display the image
+      res.writeHead(200, {
+        'Content-Type': `image/gif`,
         'Content-Length': data.length,
       });
       return (res.end(data));
@@ -77,9 +150,12 @@ function generateImage(req, res, photoFilename) {
 function routeImages(req, res) {
   try {
     console.log(`${timeStamp()} - Processing HTTP ${req.method} request for '${req.path}' as 'image file'`);
+    // Type of image (thumbnail, preview or download)
     let currentPrefix = '';
     if (req.params.image.startsWith(process.env.PREFIX_THUMBNAILS)) { currentPrefix = process.env.PREFIX_THUMBNAILS; }
     if (req.params.image.startsWith(process.env.PREFIX_PREVIEWS)) { currentPrefix = process.env.PREFIX_PREVIEWS; }
+    // Image format
+    const imageFormat = getPhotoFormat(req.params.image);
     // Image request
     console.log(`${timeStamp()} - Image requested for '${req.params.image}'`);
     const photoFilename = currentPrefix !== '' ? removePrefix(req.params.image, currentPrefix) : req.params.image;
@@ -88,11 +164,11 @@ function routeImages(req, res) {
       // Photo file exists
       console.log(`${timeStamp()} - Photo file exists for image: '${photoFilename}'`);
       if (currentPrefix === process.env.PREFIX_THUMBNAILS) {
-        generateThumbnail(req, res, photoFilename);
+        imageFormat === 'gif' ? generateGifThumbnail(req, res, photoFilename) : generateJpegThumbnail(req, res, photoFilename);
       } else if (currentPrefix === process.env.PREFIX_PREVIEWS) {
-        generatePreview(req, res, photoFilename);
+        imageFormat === 'gif' ? generateGifPreview(req, res, photoFilename) : generateJpegPreview(req, res, photoFilename);
       } else {
-        generateImage(req, res, photoFilename);
+        imageFormat === 'gif' ? generateGifImage(req, res, photoFilename) : generateJpegImage(req, res, photoFilename);
       }
     } else {
       // Photo file does not exist
