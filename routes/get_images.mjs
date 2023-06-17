@@ -24,9 +24,10 @@ function getPhotoFormat(photoFilename) {
 
 async function generateJpegThumbnail(req, res, photoFilename) {
   console.log(`${timeStamp()} - Generating 'JPEG' thumbnail: '${photoFilename}'`);
-  await sharp.cache({files: 0});
-  await sharp.cache(false);
-  await sharp(process.env.PATH_UPLOADS + photoFilename)
+  sharp.cache({ items: 0 });
+  sharp.cache({ files: 0 });
+  sharp.cache(false);
+  sharp(process.env.PATH_UPLOADS + photoFilename)
     .rotate()
     .resize(256, 192)
     .toFormat('jpeg')
@@ -36,6 +37,7 @@ async function generateJpegThumbnail(req, res, photoFilename) {
     .then((data) => {
     // To display the image
       res.writeHead(200, {
+        'Pragma-directive': 'no-cache', 'Cache-directive': 'no-cache', 'Cache-control': 'no-cache', 'Pragma': 'no-cache', 'Expires': '0',
         'Content-Type': 'image/jpeg',
         'Content-Length': data.length,
       });
@@ -45,9 +47,10 @@ async function generateJpegThumbnail(req, res, photoFilename) {
 
 async function generateGifThumbnail(req, res, photoFilename) {
   console.log(`${timeStamp()} - Generating 'GIF' thumbnail: '${photoFilename}'`);
-  await sharp.cache({files: 0});
-  await sharp.cache(false);
-  await sharp(process.env.PATH_UPLOADS + photoFilename, { animated: true })
+  sharp.cache({ items: 0 });
+  sharp.cache({ files: 0 });
+  sharp.cache(false);
+  sharp(process.env.PATH_UPLOADS + photoFilename, { animated: true })
     .rotate()
     .resize(256, 192)
     .toFormat('gif')
@@ -56,6 +59,7 @@ async function generateGifThumbnail(req, res, photoFilename) {
     .then((data) => {
     // To display the image
       res.writeHead(200, {
+        'Pragma-directive': 'no-cache', 'Cache-directive': 'no-cache', 'Cache-control': 'no-cache', 'Pragma': 'no-cache', 'Expires': '0',
         'Content-Type': 'image/gif',
         'Content-Length': data.length,
       });
@@ -67,9 +71,10 @@ async function generateGifThumbnail(req, res, photoFilename) {
 
 async function generateJpegPreview(req, res, photoFilename) {
   console.log(`${timeStamp()} - Generating 'JPEG' preview: '${photoFilename}'`);
-  await sharp.cache({files: 0});
-  await sharp.cache(false);
-  await sharp(process.env.PATH_UPLOADS + photoFilename)
+  sharp.cache({ items: 0 });
+  sharp.cache({ files: 0 });
+  sharp.cache(false);
+  sharp(process.env.PATH_UPLOADS + photoFilename)
     .rotate()
     .resize(1080, 1080, { fit: 'inside' })
     .toFormat('jpeg')
@@ -78,6 +83,7 @@ async function generateJpegPreview(req, res, photoFilename) {
     .then((data) => {
     // To display the image
       res.writeHead(200, {
+        'Pragma-directive': 'no-cache', 'Cache-directive': 'no-cache', 'Cache-control': 'no-cache', 'Pragma': 'no-cache', 'Expires': '0',
         'Content-Type': 'image/jpeg',
         'Content-Length': data.length,
       });
@@ -87,9 +93,10 @@ async function generateJpegPreview(req, res, photoFilename) {
 
 async function generateGifPreview(req, res, photoFilename) {
   console.log(`${timeStamp()} - Generating 'GIF' preview: '${photoFilename}'`);
-  await sharp.cache({files: 0});
-  await sharp.cache(false);
-  await sharp(process.env.PATH_UPLOADS + photoFilename, { animated: true })
+  sharp.cache({ items: 0 });
+  sharp.cache({ files: 0 });
+  sharp.cache(false);
+  sharp(process.env.PATH_UPLOADS + photoFilename, { animated: true })
     .rotate()
     .resize(1080, 1080, { fit: 'inside' })
     .toFormat('gif')
@@ -98,6 +105,7 @@ async function generateGifPreview(req, res, photoFilename) {
     .then((data) => {
     // To display the image
       res.writeHead(200, {
+        'Pragma-directive': 'no-cache', 'Cache-directive': 'no-cache', 'Cache-control': 'no-cache', 'Pragma': 'no-cache', 'Expires': '0',
         'Content-Type': 'image/gif',
         'Content-Length': data.length,
       });
@@ -109,9 +117,10 @@ async function generateGifPreview(req, res, photoFilename) {
 
 async function generateJpegImage(req, res, photoFilename) {
   console.log(`${timeStamp()} - Generating unaltered 'JPEG' image: '${photoFilename}'`);
-  await sharp.cache({files: 0});
-  await sharp.cache(false);
-  await sharp(process.env.PATH_UPLOADS + photoFilename)
+  sharp.cache({ items: 0 });
+  sharp.cache({ files: 0 });
+  sharp.cache(false);
+  sharp(process.env.PATH_UPLOADS + photoFilename)
     .rotate()
     .toFormat('jpeg')
     .jpeg({ quality: 100 })
@@ -119,6 +128,7 @@ async function generateJpegImage(req, res, photoFilename) {
     .then((data) => {
     // To display the image
       res.writeHead(200, {
+        'Pragma-directive': 'no-cache', 'Cache-directive': 'no-cache', 'Cache-control': 'no-cache', 'Pragma': 'no-cache', 'Expires': '0',
         'Content-Type': `image/jpeg`,
         'Content-Length': data.length,
       });
@@ -128,15 +138,17 @@ async function generateJpegImage(req, res, photoFilename) {
 
 async function generateGifImage(req, res, photoFilename) {
   console.log(`${timeStamp()} - Generating unaltered 'GIF' image: '${photoFilename}'`);
-  await sharp.cache({files: 0});
-  await sharp.cache(false);
-  await sharp(process.env.PATH_UPLOADS + photoFilename, { animated: true })
+  sharp.cache({ items: 0 });
+  sharp.cache({ files: 0 });
+  sharp.cache(false);
+  sharp(process.env.PATH_UPLOADS + photoFilename, { animated: true })
     .rotate()
     .toFormat('gif')
     .toBuffer()
     .then((data) => {
     // To display the image
       res.writeHead(200, {
+        'Pragma-directive': 'no-cache', 'Cache-directive': 'no-cache', 'Cache-control': 'no-cache', 'Pragma': 'no-cache', 'Expires': '0',
         'Content-Type': `image/gif`,
         'Content-Length': data.length,
       });
