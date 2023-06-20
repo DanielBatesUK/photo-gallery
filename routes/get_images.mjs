@@ -98,9 +98,6 @@ async function generateGifPreview(req, res, photoFilename) {
   sharp.cache(false);
   sharp(process.env.PATH_UPLOADS + photoFilename, { animated: true })
     .rotate()
-    .resize(1080, 1080, { fit: 'inside' })
-    .toFormat('gif')
-    .gif({pageHeight: 1080})
     .toBuffer()
     .then((data) => {
     // To display the image
