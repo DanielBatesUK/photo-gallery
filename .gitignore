@@ -1,8 +1,8 @@
 # My ignores ######################################################################################
 
 .vscode/
-pm2-process.json
 .eslintrc.json
+.prettierrc
 my-css/
 my-images/
 
