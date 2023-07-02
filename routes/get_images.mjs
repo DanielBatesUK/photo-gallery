@@ -31,7 +31,6 @@ async function generateJpegThumbnail(req, res, photoFilename) {
     .resize(256, 192)
     .toFormat('jpeg')
     .jpeg({ quality: 30 })
-    .gif({ pageHeight: 192 })
     .toBuffer()
     .then((data) => {
       // To display the image
