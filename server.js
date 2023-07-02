@@ -47,6 +47,7 @@ dotevn.config();
 
 // Starting
 console.log(`${timeStamp()} - Server Starting`);
+if (process.debugPort) console.log(`${timeStamp()} - Debug on port ${process.debugPort}`); // Log debug port
 
 // ################################################################################################
 
