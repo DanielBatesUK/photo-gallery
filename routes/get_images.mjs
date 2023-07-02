@@ -16,9 +16,8 @@ function removePrefix(name, prefix) {
 }
 
 function getPhotoFormat(photoFilename) {
-  return (photoFilename.split('.').pop() === 'jpg' ? 'jpeg' : photoFilename.split('.').pop())
+  return photoFilename.split('.').pop() === 'jpg' ? 'jpeg' : photoFilename.split('.').pop();
 }
-
 
 // ################################################################################################
 
@@ -32,16 +31,20 @@ async function generateJpegThumbnail(req, res, photoFilename) {
     .resize(256, 192)
     .toFormat('jpeg')
     .jpeg({ quality: 30 })
-    .gif({pageHeight: 192})
+    .gif({ pageHeight: 192 })
     .toBuffer()
     .then((data) => {
-    // To display the image
+      // To display the image
       res.writeHead(200, {
-        'Pragma-directive': 'no-cache', 'Cache-directive': 'no-cache', 'Cache-control': 'no-cache', 'Pragma': 'no-cache', 'Expires': '0',
+        'Pragma-directive': 'no-cache',
+        'Cache-directive': 'no-cache',
+        'Cache-control': 'no-cache',
+        Pragma: 'no-cache',
+        Expires: '0',
         'Content-Type': 'image/jpeg',
         'Content-Length': data.length,
       });
-      return (res.end(data));
+      return res.end(data);
     });
 }
 
@@ -54,16 +57,20 @@ async function generateGifThumbnail(req, res, photoFilename) {
     .rotate()
     .resize(256, 192)
     .toFormat('gif')
-    .gif({pageHeight: 192})
+    .gif({ pageHeight: 192 })
     .toBuffer()
     .then((data) => {
-    // To display the image
+      // To display the image
       res.writeHead(200, {
-        'Pragma-directive': 'no-cache', 'Cache-directive': 'no-cache', 'Cache-control': 'no-cache', 'Pragma': 'no-cache', 'Expires': '0',
+        'Pragma-directive': 'no-cache',
+        'Cache-directive': 'no-cache',
+        'Cache-control': 'no-cache',
+        Pragma: 'no-cache',
+        Expires: '0',
         'Content-Type': 'image/gif',
         'Content-Length': data.length,
       });
-      return (res.end(data));
+      return res.end(data);
     });
 }
 
@@ -81,13 +88,17 @@ async function generateJpegPreview(req, res, photoFilename) {
     .jpeg({ quality: 60 })
     .toBuffer()
     .then((data) => {
-    // To display the image
+      // To display the image
       res.writeHead(200, {
-        'Pragma-directive': 'no-cache', 'Cache-directive': 'no-cache', 'Cache-control': 'no-cache', 'Pragma': 'no-cache', 'Expires': '0',
+        'Pragma-directive': 'no-cache',
+        'Cache-directive': 'no-cache',
+        'Cache-control': 'no-cache',
+        Pragma: 'no-cache',
+        Expires: '0',
         'Content-Type': 'image/jpeg',
         'Content-Length': data.length,
       });
-      return (res.end(data));
+      return res.end(data);
     });
 }
 
@@ -100,13 +111,17 @@ async function generateGifPreview(req, res, photoFilename) {
     .rotate()
     .toBuffer()
     .then((data) => {
-    // To display the image
+      // To display the image
       res.writeHead(200, {
-        'Pragma-directive': 'no-cache', 'Cache-directive': 'no-cache', 'Cache-control': 'no-cache', 'Pragma': 'no-cache', 'Expires': '0',
+        'Pragma-directive': 'no-cache',
+        'Cache-directive': 'no-cache',
+        'Cache-control': 'no-cache',
+        Pragma: 'no-cache',
+        Expires: '0',
         'Content-Type': 'image/gif',
         'Content-Length': data.length,
       });
-      return (res.end(data));
+      return res.end(data);
     });
 }
 
@@ -123,13 +138,17 @@ async function generateJpegImage(req, res, photoFilename) {
     .jpeg({ quality: 100 })
     .toBuffer()
     .then((data) => {
-    // To display the image
+      // To display the image
       res.writeHead(200, {
-        'Pragma-directive': 'no-cache', 'Cache-directive': 'no-cache', 'Cache-control': 'no-cache', 'Pragma': 'no-cache', 'Expires': '0',
-        'Content-Type': `image/jpeg`,
+        'Pragma-directive': 'no-cache',
+        'Cache-directive': 'no-cache',
+        'Cache-control': 'no-cache',
+        Pragma: 'no-cache',
+        Expires: '0',
+        'Content-Type': 'image/jpeg',
         'Content-Length': data.length,
       });
-      return (res.end(data));
+      return res.end(data);
     });
 }
 
@@ -143,13 +162,17 @@ async function generateGifImage(req, res, photoFilename) {
     .toFormat('gif')
     .toBuffer()
     .then((data) => {
-    // To display the image
+      // To display the image
       res.writeHead(200, {
-        'Pragma-directive': 'no-cache', 'Cache-directive': 'no-cache', 'Cache-control': 'no-cache', 'Pragma': 'no-cache', 'Expires': '0',
-        'Content-Type': `image/gif`,
+        'Pragma-directive': 'no-cache',
+        'Cache-directive': 'no-cache',
+        'Cache-control': 'no-cache',
+        Pragma: 'no-cache',
+        Expires: '0',
+        'Content-Type': 'image/gif',
         'Content-Length': data.length,
       });
-      return (res.end(data));
+      return res.end(data);
     });
 }
 
@@ -161,8 +184,12 @@ function routeImages(req, res) {
     console.log(`${timeStamp()} - Processing HTTP ${req.method} request for '${req.path}' as 'image file'`);
     // Type of image (thumbnail, preview or download)
     let currentPrefix = '';
-    if (req.params.image.startsWith(process.env.PREFIX_THUMBNAILS)) { currentPrefix = process.env.PREFIX_THUMBNAILS; }
-    if (req.params.image.startsWith(process.env.PREFIX_PREVIEWS)) { currentPrefix = process.env.PREFIX_PREVIEWS; }
+    if (req.params.image.startsWith(process.env.PREFIX_THUMBNAILS)) {
+      currentPrefix = process.env.PREFIX_THUMBNAILS;
+    }
+    if (req.params.image.startsWith(process.env.PREFIX_PREVIEWS)) {
+      currentPrefix = process.env.PREFIX_PREVIEWS;
+    }
     // Image format
     const imageFormat = getPhotoFormat(req.params.image);
     // Image request
