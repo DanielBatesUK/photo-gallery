@@ -21,7 +21,7 @@ function getPhotoFormat(photoFilename) {
 
 // ################################################################################################
 
-async function generateJpegThumbnail(req, res, photoFilename) {
+function generateJpegThumbnail(req, res, photoFilename) {
   console.log(`${timeStamp()} - Generating 'JPEG' thumbnail: '${photoFilename}'`);
   sharp.cache({ items: 0 });
   sharp.cache({ files: 0 });
@@ -35,11 +35,7 @@ async function generateJpegThumbnail(req, res, photoFilename) {
     .then((data) => {
       // To display the image
       res.writeHead(200, {
-        'Pragma-directive': 'no-cache',
-        'Cache-directive': 'no-cache',
-        'Cache-control': 'no-cache',
-        Pragma: 'no-cache',
-        Expires: '0',
+        'Cache-control': 'max-age=3600',
         'Content-Type': 'image/jpeg',
         'Content-Length': data.length,
       });
@@ -47,7 +43,7 @@ async function generateJpegThumbnail(req, res, photoFilename) {
     });
 }
 
-async function generateGifThumbnail(req, res, photoFilename) {
+function generateGifThumbnail(req, res, photoFilename) {
   console.log(`${timeStamp()} - Generating 'GIF' thumbnail: '${photoFilename}'`);
   sharp.cache({ items: 0 });
   sharp.cache({ files: 0 });
@@ -61,11 +57,7 @@ async function generateGifThumbnail(req, res, photoFilename) {
     .then((data) => {
       // To display the image
       res.writeHead(200, {
-        'Pragma-directive': 'no-cache',
-        'Cache-directive': 'no-cache',
-        'Cache-control': 'no-cache',
-        Pragma: 'no-cache',
-        Expires: '0',
+        'Cache-control': 'max-age=3600',
         'Content-Type': 'image/gif',
         'Content-Length': data.length,
       });
@@ -75,7 +67,7 @@ async function generateGifThumbnail(req, res, photoFilename) {
 
 // ################################################################################################
 
-async function generateJpegPreview(req, res, photoFilename) {
+function generateJpegPreview(req, res, photoFilename) {
   console.log(`${timeStamp()} - Generating 'JPEG' preview: '${photoFilename}'`);
   sharp.cache({ items: 0 });
   sharp.cache({ files: 0 });
@@ -89,11 +81,7 @@ async function generateJpegPreview(req, res, photoFilename) {
     .then((data) => {
       // To display the image
       res.writeHead(200, {
-        'Pragma-directive': 'no-cache',
-        'Cache-directive': 'no-cache',
-        'Cache-control': 'no-cache',
-        Pragma: 'no-cache',
-        Expires: '0',
+        'Cache-control': 'max-age=3600',
         'Content-Type': 'image/jpeg',
         'Content-Length': data.length,
       });
@@ -101,7 +89,7 @@ async function generateJpegPreview(req, res, photoFilename) {
     });
 }
 
-async function generateGifPreview(req, res, photoFilename) {
+function generateGifPreview(req, res, photoFilename) {
   console.log(`${timeStamp()} - Generating 'GIF' preview: '${photoFilename}'`);
   sharp.cache({ items: 0 });
   sharp.cache({ files: 0 });
@@ -112,11 +100,7 @@ async function generateGifPreview(req, res, photoFilename) {
     .then((data) => {
       // To display the image
       res.writeHead(200, {
-        'Pragma-directive': 'no-cache',
-        'Cache-directive': 'no-cache',
-        'Cache-control': 'no-cache',
-        Pragma: 'no-cache',
-        Expires: '0',
+        'Cache-control': 'max-age=3600',
         'Content-Type': 'image/gif',
         'Content-Length': data.length,
       });
@@ -126,7 +110,7 @@ async function generateGifPreview(req, res, photoFilename) {
 
 // ################################################################################################
 
-async function generateJpegImage(req, res, photoFilename) {
+function generateJpegImage(req, res, photoFilename) {
   console.log(`${timeStamp()} - Generating unaltered 'JPEG' image: '${photoFilename}'`);
   sharp.cache({ items: 0 });
   sharp.cache({ files: 0 });
@@ -139,11 +123,7 @@ async function generateJpegImage(req, res, photoFilename) {
     .then((data) => {
       // To display the image
       res.writeHead(200, {
-        'Pragma-directive': 'no-cache',
-        'Cache-directive': 'no-cache',
         'Cache-control': 'no-cache',
-        Pragma: 'no-cache',
-        Expires: '0',
         'Content-Type': 'image/jpeg',
         'Content-Length': data.length,
       });
@@ -151,7 +131,7 @@ async function generateJpegImage(req, res, photoFilename) {
     });
 }
 
-async function generateGifImage(req, res, photoFilename) {
+function generateGifImage(req, res, photoFilename) {
   console.log(`${timeStamp()} - Generating unaltered 'GIF' image: '${photoFilename}'`);
   sharp.cache({ items: 0 });
   sharp.cache({ files: 0 });
@@ -163,11 +143,7 @@ async function generateGifImage(req, res, photoFilename) {
     .then((data) => {
       // To display the image
       res.writeHead(200, {
-        'Pragma-directive': 'no-cache',
-        'Cache-directive': 'no-cache',
         'Cache-control': 'no-cache',
-        Pragma: 'no-cache',
-        Expires: '0',
         'Content-Type': 'image/gif',
         'Content-Length': data.length,
       });
