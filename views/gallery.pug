@@ -23,7 +23,7 @@ div(class='page')
   - photosPaginationCount = photosPaginationStart
   while photosCount < photosPerPage
     - if (typeof(photoFiles[photosStart + photosCount]) !== 'undefined'){
-      img(id=photosCount src=`.${route_images}/${prefix_thumbnails}${photoFiles[photosStart + photosCount]}` alt=photoFiles[photosStart + photosCount] class='gallery-thumbnails' onclick='openModal(this);' loading='lazy')
+      img(id=photosCount src=`.${route_images}/placeholder.png` data-src=`.${route_images}/${prefix_thumbnails}${photoFiles[photosStart + photosCount]}` alt=photoFiles[photosStart + photosCount] class='gallery-thumbnails' onclick='openModal(this);' loading="lazy")
     -}
     - photosCount++        
 div(id='gallery-modal' class='modal')
@@ -153,5 +153,13 @@ script.
       openModal(document.getElementById((Math.sign(modalParam) === 1 ? 0 : (!{photosPerPage} - 1))));
     }
   }
+
+  // Load thumbnails after page has loaded
+  window.onload = (event) => {
+    for(let i = 0; i < !{photosPerPage}; i++) {
+      document.getElementById(i).src = document.getElementById(i).getAttribute('data-src');
+    }
+  };
+
 include layout_signature
 include layout_footer

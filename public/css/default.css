@@ -64,6 +64,7 @@
   --dark-color: #404040;
   --medium-color: #808080;
   --light-color: #b0b0b0;
+  --very-light-color: #e0e0e0;
 
   --navigation-background: #e8e8e8;
   --navigation-foreground: #808080;
@@ -295,14 +296,21 @@ div.signature a:hover {
 /* #### Gallery Thumbnails ##################################################################### */
 img.gallery-thumbnails {
   box-sizing: border-box;
-  border: 0.01em solid var(--light-color);
+  border: 0.001em solid var(--very-light-color);
   border-radius: 1em;
   margin: 1%;
-  width:256px;
+  min-width:23%;
   max-width: 23%;
-  width:23%;
+  min-height:192px;
+  max-height:192px;
   cursor: pointer;
   transition: 0.3s;
+  object-fit: cover;
+  background-color: var(--very-light-color);
+  background-image: linear-gradient(135deg, var(--very-light-color) 0%, var(--background-color) 33%, var(--background-color) 66%, var(--very-light-color) 100%);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
   img.gallery-thumbnails:hover {
     opacity: 0.7;
