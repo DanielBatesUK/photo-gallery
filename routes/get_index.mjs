@@ -19,11 +19,11 @@ function routeIndex(req, res) {
       route_index: process.env.ROUTE_INDEX,
       route_upload: process.env.ROUTE_UPLOAD,
     });
-    res.end();
+    // res.end();
   } catch (error) {
     console.error(error);
     res.status(500).send(`${timeStamp()} - Index error`);
-    res.end();
+    // res.end();
   }
 }
 

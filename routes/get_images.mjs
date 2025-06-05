@@ -185,12 +185,12 @@ function routeImages(req, res) {
       // Photo file does not exist
       console.log(`${timeStamp()} - Photo file does not exist for '${photoFilename}'`);
       res.status(404).send(`Error 404 - ${timeStamp()} - Image not found: '${req.params.image}'`);
-      res.end();
+      // res.end();
     }
   } catch (error) {
     console.error(error);
     res.status(500).send(`Error 500 - ${timeStamp()} - Images error`);
-    res.end();
+    // res.end();
   }
 }
 

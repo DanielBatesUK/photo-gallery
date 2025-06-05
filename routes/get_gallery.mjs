@@ -14,9 +14,13 @@ function routeGallery(req, res) {
     console.log(`${timeStamp()} - Processing HTTP ${req.method} request for '${req.path}' as 'gallery'`);
     console.log(`${timeStamp()} - Getting photo filenames:`);
     let paramStart = 0;
-    if (typeof req.query.s !== 'undefined') { paramStart = Number(req.query.s); }
+    if (typeof req.query.s !== 'undefined') {
+      paramStart = Number(req.query.s);
+    }
     let paramModalTime = false;
-    if (typeof req.query.m !== 'undefined') { paramModalTime = Number(req.query.m); }
+    if (typeof req.query.m !== 'undefined') {
+      paramModalTime = Number(req.query.m);
+    }
     const photoFilenames = fs.readdirSync(process.env.PATH_UPLOADS);
     res.render(process.env.VIEW_GALLERY, {
       web_title: process.env.WEB_TITLE,
@@ -37,11 +41,11 @@ function routeGallery(req, res) {
       paramStart,
       paramModalTime,
     });
-    res.end();
+    // res.end();
   } catch (error) {
     console.error(error);
     res.status(500).send(`${timeStamp()} - Gallery error`);
-    res.end();
+    // res.end();
   }
 }
 

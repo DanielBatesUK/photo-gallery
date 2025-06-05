@@ -21,11 +21,11 @@ function routeGetUpload(req, res) {
       route_upload: process.env.ROUTE_UPLOAD,
       page: 'upload-form',
     });
-    res.end();
+    // res.end();
   } catch (error) {
     console.error(error);
     res.status(500).send(`${timeStamp()} - Get upload error`);
-    res.end();
+    // res.end();
   }
 }
 

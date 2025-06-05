@@ -35,11 +35,11 @@ function routePostUpload(req, res) {
       route_upload: process.env.ROUTE_UPLOAD,
       page: 'upload-successful',
     });
-    res.end();
+    // res.end();
   } catch (error) {
     console.log(error);
     res.status(500).send(`${timeStamp()} - Post upload error`);
-    res.end();
+    // res.end();
   }
 }
 

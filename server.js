@@ -75,7 +75,7 @@ app.set('view engine', 'pug');
 // ################################################################################################
 
 // HTTP requests all
-app.all('*', (req, res, next) => {
+app.all('/*all', (req, res, next) => {
   const protocol = req.headers['x-forwarded-proto'] || req.protocol;
   const host = req.headers['x-forwarded-host'] || req.get('host');
   const originalUrl = `${protocol}://${host}${req.originalUrl}`;
