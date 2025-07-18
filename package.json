@@ -20,10 +20,10 @@
   "homepage": "https://github.com/DanielBatesUK/photo-gallery#readme",
   "dependencies": {
     "cookie-parser": "^1.4.7",
-    "dotenv": "^16.5.0",
+    "dotenv": "^17.2.0",
     "exifr": "^7.1.3",
     "express": "^5.1.0",
-    "multer": "^2.0.1",
+    "multer": "^2.0.2",
     "pug": "^3.0.3",
     "sharp": "^0.34.2",
     "uuid": "^11.1.0"
