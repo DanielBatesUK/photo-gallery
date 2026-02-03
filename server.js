@@ -19,29 +19,23 @@
 // ################################################################################################
 
 // Imports
-import dotevn from 'dotenv';
-import express from 'express';
-import cookieParser from 'cookie-parser';
-import fs from 'fs';
+import express from "express";
+import cookieParser from "cookie-parser";
+import fs from "fs";
 
 // My Imports
-import timeStamp from './lib/time_stamp.mjs';
-import upload from './lib/upload_settings.mjs';
-import authorisationCheck from './lib/authorisation_check.mjs';
+import timeStamp from "./lib/time_stamp.mjs";
+import upload from "./lib/upload_settings.mjs";
+import authorisationCheck from "./lib/authorisation_check.mjs";
 
 // ################################################################################################
 
 // Routes
-import routeIndex from './routes/get_index.mjs';
-import routeGallery from './routes/get_gallery.mjs';
-import routeGetUpload from './routes/get_upload.mjs';
-import routePostUpload from './routes/post_upload.mjs';
-import routeImages from './routes/get_images.mjs';
-
-// ################################################################################################
-
-// dotEnv
-dotevn.config();
+import routeIndex from "./routes/get_index.mjs";
+import routeGallery from "./routes/get_gallery.mjs";
+import routeGetUpload from "./routes/get_upload.mjs";
+import routePostUpload from "./routes/post_upload.mjs";
+import routeImages from "./routes/get_images.mjs";
 
 // ################################################################################################
 
@@ -52,7 +46,7 @@ if (process.debugPort) console.log(`${timeStamp()} - Debug on port ${process.deb
 // ################################################################################################
 
 // Check upload folder
-if (process.env.PATH_UPLOADS.endsWith('/') === false) process.env.PATH_UPLOADS = `${process.env.PATH_UPLOADS}/`;
+if (process.env.PATH_UPLOADS.endsWith("/") === false) process.env.PATH_UPLOADS = `${process.env.PATH_UPLOADS}/`;
 console.log(`${timeStamp()} - Upload folder: '${process.env.PATH_UPLOADS}'`);
 try {
   if (fs.lstatSync(process.env.PATH_UPLOADS).isDirectory() === false) throw Error;
@@ -66,35 +60,35 @@ try {
 
 // Express
 const app = express();
-app.enable('trust proxy');
+app.enable("trust proxy");
 app.use(cookieParser(process.env.SESSION_SECRET));
 app.use(express.json());
-app.use(express.static('./public'));
-app.set('view engine', 'pug');
+app.use(express.static("./public"));
+app.set("view engine", "pug");
 
 // ################################################################################################
 
 // HTTP requests all
-app.all('/*all', (req, res, next) => {
-  const protocol = req.headers['x-forwarded-proto'] || req.protocol;
-  const host = req.headers['x-forwarded-host'] || req.get('host');
+app.all("/*all", (req, res, next) => {
+  const protocol = req.headers["x-forwarded-proto"] || req.protocol;
+  const host = req.headers["x-forwarded-host"] || req.get("host");
   const originalUrl = `${protocol}://${host}${req.originalUrl}`;
   console.log(`${timeStamp()} - Received HTTP ${req.method} request for '${originalUrl}'`);
   next();
 });
 
 // HTTP request for index page
-app.get(process.env.ROUTE_INDEX, routeIndex);
+app.get("/", routeIndex);
 
 // HTTP request for gallery page
-app.get(process.env.ROUTE_GALLERY, routeGallery);
+app.get("/gallery", routeGallery);
 
 // HTTP request for upload page
-app.get(process.env.ROUTE_UPLOAD, authorisationCheck, routeGetUpload); // GET
-app.post(process.env.ROUTE_UPLOAD, [authorisationCheck, upload.array('photos')], routePostUpload); // POST
+app.get("/upload", authorisationCheck, routeGetUpload); // GET
+app.post("/upload", [authorisationCheck, upload.array("photos")], routePostUpload); // POST
 
 // HTTP request for images
-app.get(`${process.env.ROUTE_IMAGES}/:image`, routeImages);
+app.get("/images/:image", routeImages);
 
 // ################################################################################################
 

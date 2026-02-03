@@ -1,11 +1,11 @@
 // ################################################################################################
 
 // Imports
-import fs from 'fs';
-import sharp from 'sharp';
+import fs from "fs";
+import sharp from "sharp";
 
 // My Imports
-import timeStamp from '../lib/time_stamp.mjs';
+import timeStamp from "../lib/time_stamp.mjs";
 
 // ################################################################################################
 
@@ -16,7 +16,7 @@ function removePrefix(name, prefix) {
 }
 
 function getPhotoFormat(photoFilename) {
-  return photoFilename.split('.').pop() === 'jpg' ? 'jpeg' : photoFilename.split('.').pop();
+  return photoFilename.split(".").pop() === "jpg" ? "jpeg" : photoFilename.split(".").pop();
 }
 
 // ################################################################################################
@@ -29,15 +29,15 @@ function generateJpegThumbnail(req, res, photoFilename) {
   sharp(process.env.PATH_UPLOADS + photoFilename)
     .rotate()
     .resize(256, 192)
-    .toFormat('jpeg')
+    .toFormat("jpeg")
     .jpeg({ quality: 30 })
     .toBuffer()
     .then((data) => {
       // To display the image
       res.writeHead(200, {
-        'Cache-control': 'max-age=3600',
-        'Content-Type': 'image/jpeg',
-        'Content-Length': data.length,
+        "Cache-control": "max-age=3600",
+        "Content-Type": "image/jpeg",
+        "Content-Length": data.length,
       });
       return res.end(data);
     });
@@ -51,15 +51,15 @@ function generateGifThumbnail(req, res, photoFilename) {
   sharp(process.env.PATH_UPLOADS + photoFilename, { animated: true })
     .rotate()
     .resize(256, 192)
-    .toFormat('gif')
+    .toFormat("gif")
     .gif({ pageHeight: 192 })
     .toBuffer()
     .then((data) => {
       // To display the image
       res.writeHead(200, {
-        'Cache-control': 'max-age=3600',
-        'Content-Type': 'image/gif',
-        'Content-Length': data.length,
+        "Cache-control": "max-age=3600",
+        "Content-Type": "image/gif",
+        "Content-Length": data.length,
       });
       return res.end(data);
     });
@@ -74,16 +74,16 @@ function generateJpegPreview(req, res, photoFilename) {
   sharp.cache(false);
   sharp(process.env.PATH_UPLOADS + photoFilename)
     .rotate()
-    .resize(1080, 1080, { fit: 'inside' })
-    .toFormat('jpeg')
+    .resize(1080, 1080, { fit: "inside" })
+    .toFormat("jpeg")
     .jpeg({ quality: 60 })
     .toBuffer()
     .then((data) => {
       // To display the image
       res.writeHead(200, {
-        'Cache-control': 'max-age=3600',
-        'Content-Type': 'image/jpeg',
-        'Content-Length': data.length,
+        "Cache-control": "max-age=3600",
+        "Content-Type": "image/jpeg",
+        "Content-Length": data.length,
       });
       return res.end(data);
     });
@@ -100,9 +100,9 @@ function generateGifPreview(req, res, photoFilename) {
     .then((data) => {
       // To display the image
       res.writeHead(200, {
-        'Cache-control': 'max-age=3600',
-        'Content-Type': 'image/gif',
-        'Content-Length': data.length,
+        "Cache-control": "max-age=3600",
+        "Content-Type": "image/gif",
+        "Content-Length": data.length,
       });
       return res.end(data);
     });
@@ -117,15 +117,15 @@ function generateJpegImage(req, res, photoFilename) {
   sharp.cache(false);
   sharp(process.env.PATH_UPLOADS + photoFilename)
     .rotate()
-    .toFormat('jpeg')
+    .toFormat("jpeg")
     .jpeg({ quality: 100 })
     .toBuffer()
     .then((data) => {
       // To display the image
       res.writeHead(200, {
-        'Cache-control': 'no-cache',
-        'Content-Type': 'image/jpeg',
-        'Content-Length': data.length,
+        "Cache-control": "no-cache",
+        "Content-Type": "image/jpeg",
+        "Content-Length": data.length,
       });
       return res.end(data);
     });
@@ -138,14 +138,14 @@ function generateGifImage(req, res, photoFilename) {
   sharp.cache(false);
   sharp(process.env.PATH_UPLOADS + photoFilename, { animated: true })
     .rotate()
-    .toFormat('gif')
+    .toFormat("gif")
     .toBuffer()
     .then((data) => {
       // To display the image
       res.writeHead(200, {
-        'Cache-control': 'no-cache',
-        'Content-Type': 'image/gif',
-        'Content-Length': data.length,
+        "Cache-control": "no-cache",
+        "Content-Type": "image/gif",
+        "Content-Length": data.length,
       });
       return res.end(data);
     });
@@ -158,28 +158,32 @@ function routeImages(req, res) {
   try {
     console.log(`${timeStamp()} - Processing HTTP ${req.method} request for '${req.path}' as 'image file'`);
     // Type of image (thumbnail, preview or download)
-    let currentPrefix = '';
-    if (req.params.image.startsWith(process.env.PREFIX_THUMBNAILS)) {
-      currentPrefix = process.env.PREFIX_THUMBNAILS;
+    let currentPrefix = "";
+    if (req.params.image.startsWith("thumb_")) {
+      currentPrefix = "thumb_";
     }
-    if (req.params.image.startsWith(process.env.PREFIX_PREVIEWS)) {
-      currentPrefix = process.env.PREFIX_PREVIEWS;
+    if (req.params.image.startsWith("prev_")) {
+      currentPrefix = "prev_";
     }
     // Image format
     const imageFormat = getPhotoFormat(req.params.image);
     // Image request
     console.log(`${timeStamp()} - Image requested for '${req.params.image}'`);
-    const photoFilename = currentPrefix !== '' ? removePrefix(req.params.image, currentPrefix) : req.params.image;
+    const photoFilename = currentPrefix !== "" ? removePrefix(req.params.image, currentPrefix) : req.params.image;
     // Check photo file exists
     if (fs.existsSync(process.env.PATH_UPLOADS + photoFilename)) {
       // Photo file exists
       console.log(`${timeStamp()} - Photo file exists for image: '${photoFilename}'`);
-      if (currentPrefix === process.env.PREFIX_THUMBNAILS) {
-        imageFormat === 'gif' ? generateGifThumbnail(req, res, photoFilename) : generateJpegThumbnail(req, res, photoFilename);
-      } else if (currentPrefix === process.env.PREFIX_PREVIEWS) {
-        imageFormat === 'gif' ? generateGifPreview(req, res, photoFilename) : generateJpegPreview(req, res, photoFilename);
+      if (currentPrefix === "thumb_") {
+        imageFormat === "gif"
+          ? generateGifThumbnail(req, res, photoFilename)
+          : generateJpegThumbnail(req, res, photoFilename);
+      } else if (currentPrefix === "prev_") {
+        imageFormat === "gif"
+          ? generateGifPreview(req, res, photoFilename)
+          : generateJpegPreview(req, res, photoFilename);
       } else {
-        imageFormat === 'gif' ? generateGifImage(req, res, photoFilename) : generateJpegImage(req, res, photoFilename);
+        imageFormat === "gif" ? generateGifImage(req, res, photoFilename) : generateJpegImage(req, res, photoFilename);
       }
     } else {
       // Photo file does not exist
